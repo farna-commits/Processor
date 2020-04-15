@@ -5,6 +5,8 @@
 
 module processor
 
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+                                                                            //input/outputs//
 (
     input clk,
     input rst,
@@ -15,17 +17,17 @@ module processor
     output reg [15:0]light 
 );
     
-    parameter N=32;    
+    parameter N=32;   //no. of bits
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-    //internal signals
+
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+                                                                            //internal signals//
+
     wire [N-1:0]pcInput;         //PC
     wire [N-1:0]pcOutput;        //PC
-    
     wire [N-1:0]Instruction;     //PC->hagat kteer
-    
     wire [N-1:0]ReadData1;       //RegFile
     wire [N-1:0]ReadData2;       //RegFile
-    
     //Control Unit
     wire Branch;
     wire MemRead;
@@ -34,69 +36,61 @@ module processor
     wire MemWrite;
     wire ALUsrc;
     wire RegWrite;
-  
     //Imm generator
     wire [N-1:0]ImmGeneratorOutput;
-    
     //ALU CONTROL
     wire [3:0]ALUcontrolSelect;
-    
-
     //ALU
     wire ALUzeroFlag;
     wire [31:0]ALUResult;
-    
     //Data Memory
     wire [N-1:0]DataMem_ReadData;
-    
-    
-    
     //MUX
     wire [N-1:0]RF_MUX_out;
     wire [N-1:0]DM_MUX_out;
     wire [N-1:0]Adder_MUX;
-    
     //shifter
     wire [N-1:0]shifterOutput;
-    
-    
     //Adders
     wire [N-1:0]adder1;
     wire [N-1:0]adder2;
     wire dontCareAdder1;
     wire dontCareAdder2;
-    
-    
     //driver
     reg [12:0]numDisplayed;
-    
     //enable
     wire en;
     assign en =1;
-//------------------------------------------------------------------------------------------------------------------------------------------------------------------//    
-    //inst
-    reg_Nbit PC(.clk(push), .en(en), .rst(rst),.D(Adder_MUX), .Q(pcOutput));   //PC
-    InstMem InstructionMemory(.addr(pcOutput[7:2]), .data_out(Instruction));    //inst memory
-    regFile RegisterFile(.r1(Instruction[19:15]), .r2(Instruction[24:20]),.wr(Instruction[11:7]),.wd(DM_MUX_out),.wen(RegWrite),.clk(push),.rst(rst),.rdata1(ReadData1),.rdata2(ReadData2)); //reg file
-    controlUnit Control_Unit(.inst(Instruction[6:0]),.branch(Branch),.memread(MemRead),.mem2reg(Mem2Reg),.ALUop(ALUop),.memwrite(MemWrite),.ALUsrc(ALUsrc),.regwrite(RegWrite)); //control unit
-    ImmGen  immediateGenerator(.gen_out(ImmGeneratorOutput),.inst(Instruction));    //Imm gen
-    ALUcontrolUnit  ALU_Control_Unit(.ALUop(ALUop),.in1(Instruction[14:12]),.in2(Instruction[30]),.ALUsel(ALUcontrolSelect));   //aluControl
-    ALU ALU1(.a(ReadData1),.b(RF_MUX_out),.selection(ALUcontrolSelect),.out(ALUResult),.ZF(ALUzeroFlag));  //ALU (a-b)
-    DataMem DataMemory(.clk(push),.MemRead(MemRead),.MemWrite(MemWrite),.addr(ALUResult[7:2]),.data_in(ReadData2),.data_out(DataMem_ReadData));   //datamemory
-    adderUnit   Adder2(.a(pcOutput),.b(shifterOutput),.cout(dontCareAdder2),.sum(adder2));  //adder of imm
-    adderUnit   Adder1(.a(pcOutput),.b(4'b0100),.cout(dontCareAdder1),.sum(adder1));        //inc of pc
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+                                                                            //Instantiations//
+
+    reg_Nbit PC                                 (.clk(push), .en(en), .rst(rst),.D(Adder_MUX), .Q(pcOutput));   //PC
+    InstMem InstructionMemory                   (.addr(pcOutput[7:2]), .data_out(Instruction));    //inst memory
+    regFile RegisterFile                        (.r1(Instruction[19:15]), .r2(Instruction[24:20]),.wr(Instruction[11:7]),.wd(DM_MUX_out),.wen(RegWrite),.clk(push),.rst(rst),.rdata1(ReadData1),.rdata2(ReadData2)); //reg file
+    controlUnit Control_Unit                    (.inst(Instruction[6:0]),.branch(Branch),.memread(MemRead),.mem2reg(Mem2Reg),.ALUop(ALUop),.memwrite(MemWrite),.ALUsrc(ALUsrc),.regwrite(RegWrite)); //control unit
+    ImmGen  immediateGenerator                  (.gen_out(ImmGeneratorOutput),.inst(Instruction));    //Imm gen
+    ALUcontrolUnit  ALU_Control_Unit            (.ALUop(ALUop),.in1(Instruction[14:12]),.in2(Instruction[30]),.ALUsel(ALUcontrolSelect));   //aluControl
+    ALU ALU1                                    (.a(ReadData1),.b(RF_MUX_out),.selection(ALUcontrolSelect),.out(ALUResult),.ZF(ALUzeroFlag));  //ALU (a-b)
+    DataMem DataMemory                          (.clk(push),.MemRead(MemRead),.MemWrite(MemWrite),.addr(ALUResult[7:2]),.data_in(ReadData2),.data_out(DataMem_ReadData));   //datamemory
+    adderUnit   Adder2                          (.a(pcOutput),.b(shifterOutput),.cout(dontCareAdder2),.sum(adder2));  //adder of imm
+    adderUnit   Adder1                          (.a(pcOutput),.b(4'b0100),.cout(dontCareAdder1),.sum(adder1));        //inc of pc
     
     //MUXES
-    mux_2to1    #(31)MUX_RF(.a(ImmGeneratorOutput),.b(ReadData2),.s(ALUsrc),.out(RF_MUX_out));   //RF MUX (bet reg file and alu)
-    mux_2to1    #(31)MUX_DataMem(.a(DataMem_ReadData),.b(ALUResult),.s(Mem2Reg),.out(DM_MUX_out));   //data memory mux
-    mux_2to1    #(31)MUX_Adder(.a(adder2),.b(adder1),.s(ALUzeroFlag & Branch),.out(Adder_MUX));   //adder mux
+    mux_2to1    #(31)MUX_RF                     (.a(ImmGeneratorOutput),.b(ReadData2),.s(ALUsrc),.out(RF_MUX_out));   //RF MUX (bet reg file and alu)
+    mux_2to1    #(31)MUX_DataMem                (.a(DataMem_ReadData),.b(ALUResult),.s(Mem2Reg),.out(DM_MUX_out));   //data memory mux
+    mux_2to1    #(31)MUX_Adder                  (.a(adder2),.b(adder1),.s(ALUzeroFlag & Branch),.out(Adder_MUX));   //adder mux
     
     //shifter
-    shifter_nBit    shiftLeft1(.a(ImmGeneratorOutput), .out(shifterOutput));
+    shifter_nBit    shiftLeft1                  (.a(ImmGeneratorOutput), .out(shifterOutput));
     
     //driver
-    driver Driver1(.clk(clk), .num(numDisplayed),.Anode(Anode),.LED_out(LED_out));
+    driver Driver1                              (.clk(clk), .num(numDisplayed),.Anode(Anode),.LED_out(LED_out));
 
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+   
+                                                                            //Board//
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     //switch 10 , LEDsel in the slides is equiv to switch [1:0]
     always@(*) begin

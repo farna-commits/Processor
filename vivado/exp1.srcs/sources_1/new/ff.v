@@ -4,10 +4,10 @@
 
 module ff
 (
-input D,
-input rst,
-input clk,
-output reg Q
+    input D,
+    input rst,
+    input clk,
+    output reg Q
 );
 
 always@(posedge clk or negedge rst) begin

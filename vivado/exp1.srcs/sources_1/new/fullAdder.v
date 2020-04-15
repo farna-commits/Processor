@@ -5,10 +5,10 @@
 module fullAdder
 (
     input a,
-input b,
-input cin,
-output  sum,
-output  cout
+    input b,
+    input cin,
+    output  sum,
+    output  cout
 );
 
 assign {cout,sum} = a+b+cin;

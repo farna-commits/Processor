@@ -3,9 +3,9 @@
 
 module ImmGen
 (
-        output reg [31:0] gen_out, 
-        input [31:0] inst
-    );
+    output reg [31:0] gen_out, 
+    input [31:0] inst
+);
     
     
     always@(*) begin
