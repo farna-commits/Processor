@@ -1,0 +1,1094 @@
+
+*** Running vivado
+    with args -log processor.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source processor.tcl
+
+
+****** Vivado v2016.4 (64-bit)
+  **** SW Build 1733598 on Wed Dec 14 22:35:39 MST 2016
+  **** IP Build 1731160 on Wed Dec 14 23:47:21 MST 2016
+    ** Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
+
+source processor.tcl -notrace
+Command: synth_design -top processor -part xc7a100tcsg324-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a100t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a100t'
+INFO: Launching helper process for spawning children vivado processes
+INFO: Helper process launched with PID 7564 
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:06 . Memory (MB): peak = 305.520 ; gain = 95.973
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'processor' [C:/Users/farna/Desktop/Labs/Lab 6/exp1/exp1.srcs/sources_1/new/processor.v:6]
+	Parameter N bound to: 32 - type: integer 
+INFO: [Synth 8-638] synthesizing module 'reg_Nbit' [C:/Users/farna/Desktop/Labs/Lab 6/exp1/exp1.srcs/sources_1/new/reg_Nbit.v:6]
+	Parameter N bound to: 32 - type: integer 
+INFO: [Synth 8-638] synthesizing module 'mux_2to1' [C:/Users/farna/Desktop/Labs/Lab 6/exp1/exp1.srcs/sources_1/new/mux_2to1.v:6]
+	Parameter N bound to: 0 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'mux_2to1' (1#1) [C:/Users/farna/Desktop/Labs/Lab 6/exp1/exp1.srcs/sources_1/new/mux_2to1.v:6]
+INFO: [Synth 8-638] synthesizing module 'ff' [C:/Users/farna/Desktop/Labs/Lab 6/exp1/exp1.srcs/sources_1/new/ff.v:5]
+INFO: [Synth 8-256] done synthesizing module 'ff' (2#1) [C:/Users/farna/Desktop/Labs/Lab 6/exp1/exp1.srcs/sources_1/new/ff.v:5]
+INFO: [Synth 8-256] done synthesizing module 'reg_Nbit' (3#1) [C:/Users/farna/Desktop/Labs/Lab 6/exp1/exp1.srcs/sources_1/new/reg_Nbit.v:6]
+INFO: [Synth 8-638] synthesizing module 'InstMem' [C:/Users/farna/Desktop/Labs/Lab 6/exp1/exp1.srcs/sources_1/new/InstMem.v:5]
+INFO: [Synth 8-256] done synthesizing module 'InstMem' (4#1) [C:/Users/farna/Desktop/Labs/Lab 6/exp1/exp1.srcs/sources_1/new/InstMem.v:5]
+INFO: [Synth 8-638] synthesizing module 'regFile' [C:/Users/farna/Desktop/Labs/Lab 6/exp1/exp1.srcs/sources_1/new/regFile.v:6]
+	Parameter N bound to: 32 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'regFile' (5#1) [C:/Users/farna/Desktop/Labs/Lab 6/exp1/exp1.srcs/sources_1/new/regFile.v:6]
+INFO: [Synth 8-638] synthesizing module 'controlUnit' [C:/Users/farna/Desktop/Labs/Lab 6/exp1/exp1.srcs/sources_1/new/controlUnit.v:5]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/farna/Desktop/Labs/Lab 6/exp1/exp1.srcs/sources_1/new/controlUnit.v:20]
+INFO: [Synth 8-256] done synthesizing module 'controlUnit' (6#1) [C:/Users/farna/Desktop/Labs/Lab 6/exp1/exp1.srcs/sources_1/new/controlUnit.v:5]
+INFO: [Synth 8-638] synthesizing module 'ImmGen' [C:/Users/farna/Desktop/Labs/Lab 6/exp1/exp1.srcs/sources_1/new/ImmGen.v:4]
+INFO: [Synth 8-256] done synthesizing module 'ImmGen' (7#1) [C:/Users/farna/Desktop/Labs/Lab 6/exp1/exp1.srcs/sources_1/new/ImmGen.v:4]
+INFO: [Synth 8-638] synthesizing module 'ALUcontrolUnit' [C:/Users/farna/Desktop/Labs/Lab 6/exp1/exp1.srcs/sources_1/new/ALUcontrolUnit.v:4]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/farna/Desktop/Labs/Lab 6/exp1/exp1.srcs/sources_1/new/ALUcontrolUnit.v:24]
+INFO: [Synth 8-256] done synthesizing module 'ALUcontrolUnit' (8#1) [C:/Users/farna/Desktop/Labs/Lab 6/exp1/exp1.srcs/sources_1/new/ALUcontrolUnit.v:4]
+INFO: [Synth 8-638] synthesizing module 'ALU' [C:/Users/farna/Desktop/Labs/Lab 6/exp1/exp1.srcs/sources_1/new/ALU.v:5]
+	Parameter N bound to: 32 - type: integer 
+INFO: [Synth 8-638] synthesizing module 'adderUnit' [C:/Users/farna/Desktop/Labs/Lab 6/exp1/exp1.srcs/sources_1/new/adderUnit.v:6]
+	Parameter N bound to: 32 - type: integer 
+INFO: [Synth 8-638] synthesizing module 'fullAdder' [C:/Users/farna/Desktop/Labs/Lab 6/exp1/exp1.srcs/sources_1/new/fullAdder.v:5]
+INFO: [Synth 8-256] done synthesizing module 'fullAdder' (9#1) [C:/Users/farna/Desktop/Labs/Lab 6/exp1/exp1.srcs/sources_1/new/fullAdder.v:5]
+INFO: [Synth 8-256] done synthesizing module 'adderUnit' (10#1) [C:/Users/farna/Desktop/Labs/Lab 6/exp1/exp1.srcs/sources_1/new/adderUnit.v:6]
+INFO: [Synth 8-256] done synthesizing module 'ALU' (11#1) [C:/Users/farna/Desktop/Labs/Lab 6/exp1/exp1.srcs/sources_1/new/ALU.v:5]
+INFO: [Synth 8-638] synthesizing module 'DataMem' [C:/Users/farna/Desktop/Labs/Lab 6/exp1/exp1.srcs/sources_1/new/DataMem.v:5]
+INFO: [Synth 8-256] done synthesizing module 'DataMem' (12#1) [C:/Users/farna/Desktop/Labs/Lab 6/exp1/exp1.srcs/sources_1/new/DataMem.v:5]
+INFO: [Synth 8-638] synthesizing module 'mux_2to1__parameterized0' [C:/Users/farna/Desktop/Labs/Lab 6/exp1/exp1.srcs/sources_1/new/mux_2to1.v:6]
+	Parameter N bound to: 31 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'mux_2to1__parameterized0' (12#1) [C:/Users/farna/Desktop/Labs/Lab 6/exp1/exp1.srcs/sources_1/new/mux_2to1.v:6]
+INFO: [Synth 8-638] synthesizing module 'mux_2to1__parameterized1' [C:/Users/farna/Desktop/Labs/Lab 6/exp1/exp1.srcs/sources_1/new/mux_2to1.v:6]
+	Parameter N bound to: 31 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'mux_2to1__parameterized1' (12#1) [C:/Users/farna/Desktop/Labs/Lab 6/exp1/exp1.srcs/sources_1/new/mux_2to1.v:6]
+INFO: [Synth 8-638] synthesizing module 'mux_2to1__parameterized2' [C:/Users/farna/Desktop/Labs/Lab 6/exp1/exp1.srcs/sources_1/new/mux_2to1.v:6]
+	Parameter N bound to: 31 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'mux_2to1__parameterized2' (12#1) [C:/Users/farna/Desktop/Labs/Lab 6/exp1/exp1.srcs/sources_1/new/mux_2to1.v:6]
+INFO: [Synth 8-638] synthesizing module 'shifter_nBit' [C:/Users/farna/Desktop/Labs/Lab 6/exp1/exp1.srcs/sources_1/new/shifter_nBit.v:4]
+	Parameter N bound to: 32 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'shifter_nBit' (13#1) [C:/Users/farna/Desktop/Labs/Lab 6/exp1/exp1.srcs/sources_1/new/shifter_nBit.v:4]
+INFO: [Synth 8-638] synthesizing module 'driver' [C:/Users/farna/Desktop/Labs/Lab 6/exp1/exp1.srcs/sources_1/new/driver.v:4]
+INFO: [Synth 8-256] done synthesizing module 'driver' (14#1) [C:/Users/farna/Desktop/Labs/Lab 6/exp1/exp1.srcs/sources_1/new/driver.v:4]
+INFO: [Synth 8-256] done synthesizing module 'processor' (15#1) [C:/Users/farna/Desktop/Labs/Lab 6/exp1/exp1.srcs/sources_1/new/processor.v:6]
+WARNING: [Synth 8-3331] design shifter_nBit has unconnected port a[31]
+WARNING: [Synth 8-3331] design ImmGen has unconnected port inst[19]
+WARNING: [Synth 8-3331] design ImmGen has unconnected port inst[18]
+WARNING: [Synth 8-3331] design ImmGen has unconnected port inst[17]
+WARNING: [Synth 8-3331] design ImmGen has unconnected port inst[16]
+WARNING: [Synth 8-3331] design ImmGen has unconnected port inst[15]
+WARNING: [Synth 8-3331] design ImmGen has unconnected port inst[14]
+WARNING: [Synth 8-3331] design ImmGen has unconnected port inst[13]
+WARNING: [Synth 8-3331] design ImmGen has unconnected port inst[12]
+WARNING: [Synth 8-3331] design ImmGen has unconnected port inst[4]
+WARNING: [Synth 8-3331] design ImmGen has unconnected port inst[3]
+WARNING: [Synth 8-3331] design ImmGen has unconnected port inst[2]
+WARNING: [Synth 8-3331] design ImmGen has unconnected port inst[1]
+WARNING: [Synth 8-3331] design ImmGen has unconnected port inst[0]
+WARNING: [Synth 8-3331] design controlUnit has unconnected port inst[1]
+WARNING: [Synth 8-3331] design controlUnit has unconnected port inst[0]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:07 . Memory (MB): peak = 342.770 ; gain = 133.223
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:07 . Memory (MB): peak = 342.770 ; gain = 133.223
+---------------------------------------------------------------------------------
+INFO: [Device 21-403] Loading part xc7a100tcsg324-1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [C:/Users/farna/Desktop/Labs/Lab 6/exp1/exp1.srcs/constrs_1/new/const.xdc]
+Finished Parsing XDC File [C:/Users/farna/Desktop/Labs/Lab 6/exp1/exp1.srcs/constrs_1/new/const.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/farna/Desktop/Labs/Lab 6/exp1/exp1.srcs/constrs_1/new/const.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/processor_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/processor_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 658.836 ; gain = 0.000
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:12 ; elapsed = 00:00:14 . Memory (MB): peak = 658.836 ; gain = 449.289
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a100tcsg324-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:12 ; elapsed = 00:00:14 . Memory (MB): peak = 658.836 ; gain = 449.289
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:12 ; elapsed = 00:00:14 . Memory (MB): peak = 658.836 ; gain = 449.289
+---------------------------------------------------------------------------------
+INFO: [Synth 8-5544] ROM "mem" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5546] ROM "regwrite" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5544] ROM "ALUsel" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
+INFO: [Synth 8-5545] ROM "ZF" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+WARNING: [Synth 8-327] inferring latch for variable 'branch_reg' [C:/Users/farna/Desktop/Labs/Lab 6/exp1/exp1.srcs/sources_1/new/controlUnit.v:21]
+WARNING: [Synth 8-327] inferring latch for variable 'mem2reg_reg' [C:/Users/farna/Desktop/Labs/Lab 6/exp1/exp1.srcs/sources_1/new/controlUnit.v:21]
+WARNING: [Synth 8-327] inferring latch for variable 'ALUop_reg' [C:/Users/farna/Desktop/Labs/Lab 6/exp1/exp1.srcs/sources_1/new/controlUnit.v:21]
+WARNING: [Synth 8-327] inferring latch for variable 'memwrite_reg' [C:/Users/farna/Desktop/Labs/Lab 6/exp1/exp1.srcs/sources_1/new/controlUnit.v:21]
+WARNING: [Synth 8-327] inferring latch for variable 'ALUsrc_reg' [C:/Users/farna/Desktop/Labs/Lab 6/exp1/exp1.srcs/sources_1/new/controlUnit.v:21]
+WARNING: [Synth 8-327] inferring latch for variable 'regwrite_reg' [C:/Users/farna/Desktop/Labs/Lab 6/exp1/exp1.srcs/sources_1/new/controlUnit.v:21]
+WARNING: [Synth 8-327] inferring latch for variable 'gen_out_reg' [C:/Users/farna/Desktop/Labs/Lab 6/exp1/exp1.srcs/sources_1/new/ImmGen.v:15]
+WARNING: [Synth 8-327] inferring latch for variable 'ALUsel_reg' [C:/Users/farna/Desktop/Labs/Lab 6/exp1/exp1.srcs/sources_1/new/ALUcontrolUnit.v:16]
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:12 ; elapsed = 00:00:15 . Memory (MB): peak = 658.836 ; gain = 449.289
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   3 Input      2 Bit       Adders := 128   
++---Registers : 
+	                1 Bit    Registers := 1024  
++---Muxes : 
+	  14 Input     32 Bit        Muxes := 1     
+	   2 Input     32 Bit        Muxes := 5     
+	   4 Input     16 Bit        Muxes := 1     
+	   2 Input     12 Bit        Muxes := 7     
+	   4 Input      4 Bit        Muxes := 2     
+	   2 Input      3 Bit        Muxes := 2     
+	   5 Input      3 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 1028  
+	   5 Input      1 Bit        Muxes := 6     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Hierarchical Component Statistics 
+---------------------------------------------------------------------------------
+Hierarchical RTL Component report 
+Module processor 
+Detailed RTL Component Info : 
++---Muxes : 
+	   4 Input     16 Bit        Muxes := 1     
+Module mux_2to1 
+Detailed RTL Component Info : 
++---Muxes : 
+	   2 Input      1 Bit        Muxes := 1     
+Module ff 
+Detailed RTL Component Info : 
++---Registers : 
+	                1 Bit    Registers := 1     
+Module InstMem 
+Detailed RTL Component Info : 
++---Muxes : 
+	  14 Input     32 Bit        Muxes := 1     
+Module controlUnit 
+Detailed RTL Component Info : 
++---Muxes : 
+	   5 Input      1 Bit        Muxes := 5     
+Module ImmGen 
+Detailed RTL Component Info : 
++---Muxes : 
+	   2 Input     12 Bit        Muxes := 7     
+Module ALUcontrolUnit 
+Detailed RTL Component Info : 
++---Muxes : 
+	   2 Input      3 Bit        Muxes := 2     
+	   5 Input      3 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 3     
+	   5 Input      1 Bit        Muxes := 1     
+Module fullAdder 
+Detailed RTL Component Info : 
++---Adders : 
+	   3 Input      2 Bit       Adders := 1     
+Module ALU 
+Detailed RTL Component Info : 
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 1     
+Module DataMem 
+Detailed RTL Component Info : 
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 1     
+Module mux_2to1__parameterized0 
+Detailed RTL Component Info : 
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 1     
+Module mux_2to1__parameterized1 
+Detailed RTL Component Info : 
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 1     
+Module mux_2to1__parameterized2 
+Detailed RTL Component Info : 
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 1     
+Module driver 
+Detailed RTL Component Info : 
++---Muxes : 
+	   4 Input      4 Bit        Muxes := 2     
+---------------------------------------------------------------------------------
+Finished RTL Hierarchical Component Statistics
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 240 (col length:80)
+BRAMs: 270 (col length: RAMB18 80 RAMB36 40)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+INFO: [Synth 8-5545] ROM "ZF" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+WARNING: [Synth 8-3331] design ImmGen has unconnected port inst[19]
+WARNING: [Synth 8-3331] design ImmGen has unconnected port inst[18]
+WARNING: [Synth 8-3331] design ImmGen has unconnected port inst[17]
+WARNING: [Synth 8-3331] design ImmGen has unconnected port inst[16]
+WARNING: [Synth 8-3331] design ImmGen has unconnected port inst[15]
+WARNING: [Synth 8-3331] design ImmGen has unconnected port inst[14]
+WARNING: [Synth 8-3331] design ImmGen has unconnected port inst[13]
+WARNING: [Synth 8-3331] design ImmGen has unconnected port inst[12]
+WARNING: [Synth 8-3331] design ImmGen has unconnected port inst[4]
+WARNING: [Synth 8-3331] design ImmGen has unconnected port inst[3]
+WARNING: [Synth 8-3331] design ImmGen has unconnected port inst[2]
+WARNING: [Synth 8-3331] design ImmGen has unconnected port inst[1]
+WARNING: [Synth 8-3331] design ImmGen has unconnected port inst[0]
+WARNING: [Synth 8-3331] design InstMem has unconnected port addr[5]
+WARNING: [Synth 8-3331] design InstMem has unconnected port addr[4]
+INFO: [Synth 8-3886] merging instance 'Control_Unit/ALUop_reg[0]' (LD) to 'Control_Unit/branch_reg'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[31].rm1/genblk1[30].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[30].rm1/genblk1[30].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[29].rm1/genblk1[30].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[28].rm1/genblk1[30].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[27].rm1/genblk1[30].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[26].rm1/genblk1[30].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[25].rm1/genblk1[30].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[24].rm1/genblk1[30].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[23].rm1/genblk1[30].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[22].rm1/genblk1[30].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[21].rm1/genblk1[30].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[20].rm1/genblk1[30].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[19].rm1/genblk1[30].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[18].rm1/genblk1[30].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[17].rm1/genblk1[30].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[16].rm1/genblk1[30].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[31].rm1/genblk1[31].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[30].rm1/genblk1[31].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[29].rm1/genblk1[31].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[28].rm1/genblk1[31].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[27].rm1/genblk1[31].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[26].rm1/genblk1[31].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[25].rm1/genblk1[31].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[24].rm1/genblk1[31].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[23].rm1/genblk1[31].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[22].rm1/genblk1[31].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[21].rm1/genblk1[31].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[20].rm1/genblk1[31].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[19].rm1/genblk1[31].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[18].rm1/genblk1[31].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[17].rm1/genblk1[31].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[16].rm1/genblk1[31].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[31].rm1/genblk1[29].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[30].rm1/genblk1[29].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[29].rm1/genblk1[29].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[28].rm1/genblk1[29].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[27].rm1/genblk1[29].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[26].rm1/genblk1[29].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[25].rm1/genblk1[29].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[24].rm1/genblk1[29].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[23].rm1/genblk1[29].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[22].rm1/genblk1[29].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[21].rm1/genblk1[29].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[20].rm1/genblk1[29].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[19].rm1/genblk1[29].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[18].rm1/genblk1[29].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[17].rm1/genblk1[29].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[16].rm1/genblk1[29].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[31].rm1/genblk1[28].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[30].rm1/genblk1[28].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[29].rm1/genblk1[28].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[28].rm1/genblk1[28].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[27].rm1/genblk1[28].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[26].rm1/genblk1[28].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[25].rm1/genblk1[28].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[24].rm1/genblk1[28].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[23].rm1/genblk1[28].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[22].rm1/genblk1[28].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[21].rm1/genblk1[28].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[20].rm1/genblk1[28].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[19].rm1/genblk1[28].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[18].rm1/genblk1[28].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[17].rm1/genblk1[28].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[16].rm1/genblk1[28].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[31].rm1/genblk1[27].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[30].rm1/genblk1[27].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[29].rm1/genblk1[27].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[28].rm1/genblk1[27].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[27].rm1/genblk1[27].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[26].rm1/genblk1[27].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[25].rm1/genblk1[27].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[24].rm1/genblk1[27].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[23].rm1/genblk1[27].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[22].rm1/genblk1[27].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[21].rm1/genblk1[27].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[20].rm1/genblk1[27].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[19].rm1/genblk1[27].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[18].rm1/genblk1[27].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[17].rm1/genblk1[27].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[16].rm1/genblk1[27].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[31].rm1/genblk1[26].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[30].rm1/genblk1[26].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[29].rm1/genblk1[26].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[28].rm1/genblk1[26].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[27].rm1/genblk1[26].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[26].rm1/genblk1[26].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[25].rm1/genblk1[26].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[24].rm1/genblk1[26].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[23].rm1/genblk1[26].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[22].rm1/genblk1[26].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[21].rm1/genblk1[26].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[20].rm1/genblk1[26].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[19].rm1/genblk1[26].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[18].rm1/genblk1[26].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[17].rm1/genblk1[26].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[16].rm1/genblk1[26].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[31].rm1/genblk1[25].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[30].rm1/genblk1[25].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[29].rm1/genblk1[25].ff1/Q_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (RegisterFile/\genblk1[28].rm1/genblk1[25].ff1/Q_reg )
+INFO: [Common 17-14] Message 'Synth 8-3333' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+INFO: [Synth 8-3886] merging instance 'immediateGenerator/gen_out_reg[11]' (LD) to 'immediateGenerator/gen_out_reg[8]'
+INFO: [Synth 8-3886] merging instance 'immediateGenerator/gen_out_reg[8]' (LD) to 'immediateGenerator/gen_out_reg[7]'
+INFO: [Synth 8-3886] merging instance 'immediateGenerator/gen_out_reg[7]' (LD) to 'immediateGenerator/gen_out_reg[6]'
+INFO: [Synth 8-3886] merging instance 'immediateGenerator/gen_out_reg[6]' (LD) to 'immediateGenerator/gen_out_reg[5]'
+INFO: [Synth 8-3886] merging instance 'immediateGenerator/gen_out_reg[5]' (LD) to 'immediateGenerator/gen_out_reg[4]'
+WARNING: [Synth 8-3332] Sequential element (genblk1[13].ff1/Q_reg) is unused and will be removed from module reg_Nbit.
+WARNING: [Synth 8-3332] Sequential element (genblk1[14].ff1/Q_reg) is unused and will be removed from module reg_Nbit.
+WARNING: [Synth 8-3332] Sequential element (genblk1[15].ff1/Q_reg) is unused and will be removed from module reg_Nbit.
+WARNING: [Synth 8-3332] Sequential element (genblk1[16].ff1/Q_reg) is unused and will be removed from module reg_Nbit.
+WARNING: [Synth 8-3332] Sequential element (genblk1[17].ff1/Q_reg) is unused and will be removed from module reg_Nbit.
+WARNING: [Synth 8-3332] Sequential element (genblk1[18].ff1/Q_reg) is unused and will be removed from module reg_Nbit.
+WARNING: [Synth 8-3332] Sequential element (genblk1[19].ff1/Q_reg) is unused and will be removed from module reg_Nbit.
+WARNING: [Synth 8-3332] Sequential element (genblk1[20].ff1/Q_reg) is unused and will be removed from module reg_Nbit.
+WARNING: [Synth 8-3332] Sequential element (genblk1[21].ff1/Q_reg) is unused and will be removed from module reg_Nbit.
+WARNING: [Synth 8-3332] Sequential element (genblk1[22].ff1/Q_reg) is unused and will be removed from module reg_Nbit.
+WARNING: [Synth 8-3332] Sequential element (genblk1[23].ff1/Q_reg) is unused and will be removed from module reg_Nbit.
+WARNING: [Synth 8-3332] Sequential element (genblk1[24].ff1/Q_reg) is unused and will be removed from module reg_Nbit.
+WARNING: [Synth 8-3332] Sequential element (genblk1[25].ff1/Q_reg) is unused and will be removed from module reg_Nbit.
+WARNING: [Synth 8-3332] Sequential element (genblk1[26].ff1/Q_reg) is unused and will be removed from module reg_Nbit.
+WARNING: [Synth 8-3332] Sequential element (genblk1[27].ff1/Q_reg) is unused and will be removed from module reg_Nbit.
+WARNING: [Synth 8-3332] Sequential element (genblk1[28].ff1/Q_reg) is unused and will be removed from module reg_Nbit.
+WARNING: [Synth 8-3332] Sequential element (genblk1[29].ff1/Q_reg) is unused and will be removed from module reg_Nbit.
+WARNING: [Synth 8-3332] Sequential element (genblk1[30].ff1/Q_reg) is unused and will be removed from module reg_Nbit.
+WARNING: [Synth 8-3332] Sequential element (genblk1[31].ff1/Q_reg) is unused and will be removed from module reg_Nbit.
+WARNING: [Synth 8-3332] Sequential element (genblk1[16].rm1/genblk1[0].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[16].rm1/genblk1[1].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[16].rm1/genblk1[2].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[16].rm1/genblk1[3].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[16].rm1/genblk1[4].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[16].rm1/genblk1[5].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[16].rm1/genblk1[6].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[16].rm1/genblk1[7].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[16].rm1/genblk1[8].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[16].rm1/genblk1[9].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[16].rm1/genblk1[10].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[16].rm1/genblk1[11].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[16].rm1/genblk1[12].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[16].rm1/genblk1[13].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[16].rm1/genblk1[14].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[16].rm1/genblk1[15].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[16].rm1/genblk1[16].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[16].rm1/genblk1[17].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[16].rm1/genblk1[18].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[16].rm1/genblk1[19].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[16].rm1/genblk1[20].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[16].rm1/genblk1[21].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[16].rm1/genblk1[22].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[16].rm1/genblk1[23].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[16].rm1/genblk1[24].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[16].rm1/genblk1[25].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[16].rm1/genblk1[26].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[16].rm1/genblk1[27].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[16].rm1/genblk1[28].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[16].rm1/genblk1[29].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[16].rm1/genblk1[30].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[16].rm1/genblk1[31].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[17].rm1/genblk1[0].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[17].rm1/genblk1[1].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[17].rm1/genblk1[2].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[17].rm1/genblk1[3].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[17].rm1/genblk1[4].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[17].rm1/genblk1[5].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[17].rm1/genblk1[6].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[17].rm1/genblk1[7].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[17].rm1/genblk1[8].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[17].rm1/genblk1[9].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[17].rm1/genblk1[10].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[17].rm1/genblk1[11].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[17].rm1/genblk1[12].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[17].rm1/genblk1[13].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[17].rm1/genblk1[14].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[17].rm1/genblk1[15].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[17].rm1/genblk1[16].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[17].rm1/genblk1[17].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[17].rm1/genblk1[18].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[17].rm1/genblk1[19].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[17].rm1/genblk1[20].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[17].rm1/genblk1[21].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[17].rm1/genblk1[22].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[17].rm1/genblk1[23].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[17].rm1/genblk1[24].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[17].rm1/genblk1[25].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[17].rm1/genblk1[26].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[17].rm1/genblk1[27].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[17].rm1/genblk1[28].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[17].rm1/genblk1[29].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[17].rm1/genblk1[30].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[17].rm1/genblk1[31].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[18].rm1/genblk1[0].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[18].rm1/genblk1[1].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[18].rm1/genblk1[2].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[18].rm1/genblk1[3].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[18].rm1/genblk1[4].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[18].rm1/genblk1[5].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[18].rm1/genblk1[6].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[18].rm1/genblk1[7].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[18].rm1/genblk1[8].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[18].rm1/genblk1[9].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[18].rm1/genblk1[10].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[18].rm1/genblk1[11].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[18].rm1/genblk1[12].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[18].rm1/genblk1[13].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[18].rm1/genblk1[14].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[18].rm1/genblk1[15].ff1/Q_reg) is unused and will be removed from module regFile.
+WARNING: [Synth 8-3332] Sequential element (genblk1[18].rm1/genblk1[16].ff1/Q_reg) is unused and will be removed from module regFile.
+INFO: [Common 17-14] Message 'Synth 8-3332' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:25 ; elapsed = 00:00:27 . Memory (MB): peak = 658.836 ; gain = 449.289
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+Distributed RAM: Preliminary Mapping  Report (see note below)
++------------+------------+-----------+----------------------+-----------------+
+|Module Name | RTL Object | Inference | Size (Depth x Width) | Primitives      | 
++------------+------------+-----------+----------------------+-----------------+
+|DataMem     | mem_reg    | Implied   | 64 x 32              | RAM64X1S x 32   | 
++------------+------------+-----------+----------------------+-----------------+
+
+Note: The table above is a preliminary report that shows the Distributed RAMs at the current stage of the synthesis flow. Some Distributed RAMs may be reimplemented as non Distributed RAM primitives later in the synthesis flow. Multiple instantiated RAMs are reported only once.
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:32 ; elapsed = 00:00:35 . Memory (MB): peak = 658.836 ; gain = 449.289
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:34 ; elapsed = 00:00:37 . Memory (MB): peak = 658.836 ; gain = 449.289
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[13].rm1/genblk1[16].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[15].rm1/genblk1[16].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[14].rm1/genblk1[16].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[15].rm1/genblk1[16].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[15].rm1/genblk1[16].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[11].rm1/genblk1[16].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[10].rm1/genblk1[16].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[11].rm1/genblk1[16].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[13].rm1/genblk1[17].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[15].rm1/genblk1[17].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[14].rm1/genblk1[17].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[15].rm1/genblk1[17].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[15].rm1/genblk1[17].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[11].rm1/genblk1[17].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[10].rm1/genblk1[17].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[11].rm1/genblk1[17].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[13].rm1/genblk1[18].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[15].rm1/genblk1[18].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[14].rm1/genblk1[18].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[15].rm1/genblk1[18].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[15].rm1/genblk1[18].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[11].rm1/genblk1[18].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[10].rm1/genblk1[18].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[11].rm1/genblk1[18].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[13].rm1/genblk1[19].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[15].rm1/genblk1[19].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[14].rm1/genblk1[19].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[15].rm1/genblk1[19].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[15].rm1/genblk1[19].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[11].rm1/genblk1[19].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[10].rm1/genblk1[19].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[11].rm1/genblk1[19].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[13].rm1/genblk1[20].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[15].rm1/genblk1[20].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[14].rm1/genblk1[20].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[15].rm1/genblk1[20].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[15].rm1/genblk1[20].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[11].rm1/genblk1[20].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[10].rm1/genblk1[20].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[11].rm1/genblk1[20].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[13].rm1/genblk1[21].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[15].rm1/genblk1[21].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[14].rm1/genblk1[21].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[15].rm1/genblk1[21].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[15].rm1/genblk1[21].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[11].rm1/genblk1[21].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[10].rm1/genblk1[21].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[11].rm1/genblk1[21].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[13].rm1/genblk1[22].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[15].rm1/genblk1[22].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[14].rm1/genblk1[22].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[15].rm1/genblk1[22].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[15].rm1/genblk1[22].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[11].rm1/genblk1[22].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[10].rm1/genblk1[22].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[11].rm1/genblk1[22].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[13].rm1/genblk1[23].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[15].rm1/genblk1[23].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[14].rm1/genblk1[23].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[15].rm1/genblk1[23].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[15].rm1/genblk1[23].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[11].rm1/genblk1[23].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[10].rm1/genblk1[23].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[11].rm1/genblk1[23].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[13].rm1/genblk1[13].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[15].rm1/genblk1[13].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[14].rm1/genblk1[13].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[15].rm1/genblk1[13].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[15].rm1/genblk1[13].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[11].rm1/genblk1[13].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[10].rm1/genblk1[13].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[11].rm1/genblk1[13].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[13].rm1/genblk1[14].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[15].rm1/genblk1[14].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[14].rm1/genblk1[14].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[15].rm1/genblk1[14].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[15].rm1/genblk1[14].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[11].rm1/genblk1[14].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[10].rm1/genblk1[14].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[11].rm1/genblk1[14].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[13].rm1/genblk1[15].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[15].rm1/genblk1[15].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[14].rm1/genblk1[15].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[15].rm1/genblk1[15].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[15].rm1/genblk1[15].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[11].rm1/genblk1[15].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[10].rm1/genblk1[15].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[11].rm1/genblk1[15].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[13].rm1/genblk1[4].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[15].rm1/genblk1[4].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[14].rm1/genblk1[4].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[15].rm1/genblk1[4].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[15].rm1/genblk1[4].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[11].rm1/genblk1[4].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[10].rm1/genblk1[4].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[11].rm1/genblk1[4].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[13].rm1/genblk1[5].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[15].rm1/genblk1[5].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[14].rm1/genblk1[5].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[15].rm1/genblk1[5].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[15].rm1/genblk1[5].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[11].rm1/genblk1[5].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[10].rm1/genblk1[5].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[11].rm1/genblk1[5].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[13].rm1/genblk1[6].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[15].rm1/genblk1[6].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[14].rm1/genblk1[6].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[15].rm1/genblk1[6].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[15].rm1/genblk1[6].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[11].rm1/genblk1[6].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[10].rm1/genblk1[6].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[11].rm1/genblk1[6].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[13].rm1/genblk1[7].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[15].rm1/genblk1[7].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[14].rm1/genblk1[7].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[15].rm1/genblk1[7].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[15].rm1/genblk1[7].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[11].rm1/genblk1[7].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[10].rm1/genblk1[7].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[11].rm1/genblk1[7].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[13].rm1/genblk1[8].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[15].rm1/genblk1[8].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[14].rm1/genblk1[8].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[15].rm1/genblk1[8].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[15].rm1/genblk1[8].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[11].rm1/genblk1[8].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[10].rm1/genblk1[8].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[11].rm1/genblk1[8].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[13].rm1/genblk1[9].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[15].rm1/genblk1[9].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[14].rm1/genblk1[9].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[15].rm1/genblk1[9].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[15].rm1/genblk1[9].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[11].rm1/genblk1[9].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[10].rm1/genblk1[9].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[11].rm1/genblk1[9].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[13].rm1/genblk1[24].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[15].rm1/genblk1[24].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[14].rm1/genblk1[24].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[15].rm1/genblk1[24].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[15].rm1/genblk1[24].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[11].rm1/genblk1[24].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[10].rm1/genblk1[24].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[11].rm1/genblk1[24].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[13].rm1/genblk1[25].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[15].rm1/genblk1[25].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[14].rm1/genblk1[25].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[15].rm1/genblk1[25].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[15].rm1/genblk1[25].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[11].rm1/genblk1[25].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[10].rm1/genblk1[25].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[11].rm1/genblk1[25].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[13].rm1/genblk1[26].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[15].rm1/genblk1[26].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[14].rm1/genblk1[26].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[15].rm1/genblk1[26].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[15].rm1/genblk1[26].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[11].rm1/genblk1[26].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[10].rm1/genblk1[26].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[11].rm1/genblk1[26].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[13].rm1/genblk1[27].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[15].rm1/genblk1[27].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[14].rm1/genblk1[27].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[15].rm1/genblk1[27].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[15].rm1/genblk1[27].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[11].rm1/genblk1[27].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[10].rm1/genblk1[27].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[11].rm1/genblk1[27].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[13].rm1/genblk1[0].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[15].rm1/genblk1[0].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[14].rm1/genblk1[0].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[15].rm1/genblk1[0].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[15].rm1/genblk1[0].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[11].rm1/genblk1[0].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[10].rm1/genblk1[0].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[11].rm1/genblk1[0].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[13].rm1/genblk1[1].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[15].rm1/genblk1[1].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[14].rm1/genblk1[1].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[15].rm1/genblk1[1].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[15].rm1/genblk1[1].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[11].rm1/genblk1[1].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[10].rm1/genblk1[1].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[11].rm1/genblk1[1].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[13].rm1/genblk1[2].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[15].rm1/genblk1[2].ff1/Q_reg'
+INFO: [Synth 8-3886] merging instance 'RegisterFile/genblk1[14].rm1/genblk1[2].ff1/Q_reg' (FDCE) to 'RegisterFile/genblk1[15].rm1/genblk1[2].ff1/Q_reg'
+INFO: [Common 17-14] Message 'Synth 8-3886' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:35 ; elapsed = 00:00:38 . Memory (MB): peak = 659.941 ; gain = 450.395
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:35 ; elapsed = 00:00:38 . Memory (MB): peak = 659.941 ; gain = 450.395
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:35 ; elapsed = 00:00:38 . Memory (MB): peak = 659.941 ; gain = 450.395
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:35 ; elapsed = 00:00:38 . Memory (MB): peak = 659.941 ; gain = 450.395
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:35 ; elapsed = 00:00:38 . Memory (MB): peak = 659.941 ; gain = 450.395
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:35 ; elapsed = 00:00:38 . Memory (MB): peak = 659.941 ; gain = 450.395
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:35 ; elapsed = 00:00:38 . Memory (MB): peak = 659.941 ; gain = 450.395
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+---------+------+
+|      |Cell     |Count |
++------+---------+------+
+|1     |BUFG     |     2|
+|2     |CARRY4   |    33|
+|3     |LUT1     |    30|
+|4     |LUT2     |   106|
+|5     |LUT3     |   121|
+|6     |LUT4     |   113|
+|7     |LUT5     |   164|
+|8     |LUT6     |   219|
+|9     |MUXF7    |    97|
+|10    |MUXF8    |    32|
+|11    |RAM64X1S |    32|
+|12    |FDCE     |   332|
+|13    |FDRE     |    20|
+|14    |LD       |     3|
+|15    |IBUF     |     9|
+|16    |OBUF     |    27|
++------+---------+------+
+
+Report Instance Areas: 
++------+------------------------+-------------------------+------+
+|      |Instance                |Module                   |Cells |
++------+------------------------+-------------------------+------+
+|1     |top                     |                         |  1340|
+|2     |  ALU_Control_Unit      |ALUcontrolUnit           |    77|
+|3     |  DataMemory            |DataMem                  |    40|
+|4     |  Driver1               |driver                   |    65|
+|5     |  MUX_Adder             |mux_2to1__parameterized2 |    12|
+|6     |  MUX_DataMem           |mux_2to1__parameterized1 |    32|
+|7     |  MUX_RF                |mux_2to1__parameterized0 |    59|
+|8     |  PC                    |reg_Nbit                 |   418|
+|9     |    \genblk1[10].ff1    |ff_329                   |     3|
+|10    |    \genblk1[11].ff1    |ff_330                   |     4|
+|11    |    \genblk1[12].ff1    |ff_331                   |     4|
+|12    |    \genblk1[1].ff1     |ff_332                   |     3|
+|13    |    \genblk1[2].ff1     |ff_333                   |     9|
+|14    |    \genblk1[3].ff1     |ff_334                   |   119|
+|15    |    \genblk1[4].ff1     |ff_335                   |    15|
+|16    |    \genblk1[5].ff1     |ff_336                   |   250|
+|17    |    \genblk1[6].ff1     |ff_337                   |     4|
+|18    |    \genblk1[7].ff1     |ff_338                   |     3|
+|19    |    \genblk1[8].ff1     |ff_339                   |     1|
+|20    |    \genblk1[9].ff1     |ff_340                   |     3|
+|21    |  RegisterFile          |regFile                  |   519|
+|22    |    \genblk1[12].rm1    |reg_Nbit_0               |    32|
+|23    |      \genblk1[0].ff1   |ff_297                   |     1|
+|24    |      \genblk1[10].ff1  |ff_298                   |     1|
+|25    |      \genblk1[11].ff1  |ff_299                   |     1|
+|26    |      \genblk1[12].ff1  |ff_300                   |     1|
+|27    |      \genblk1[13].ff1  |ff_301                   |     1|
+|28    |      \genblk1[14].ff1  |ff_302                   |     1|
+|29    |      \genblk1[15].ff1  |ff_303                   |     1|
+|30    |      \genblk1[16].ff1  |ff_304                   |     1|
+|31    |      \genblk1[17].ff1  |ff_305                   |     1|
+|32    |      \genblk1[18].ff1  |ff_306                   |     1|
+|33    |      \genblk1[19].ff1  |ff_307                   |     1|
+|34    |      \genblk1[1].ff1   |ff_308                   |     1|
+|35    |      \genblk1[20].ff1  |ff_309                   |     1|
+|36    |      \genblk1[21].ff1  |ff_310                   |     1|
+|37    |      \genblk1[22].ff1  |ff_311                   |     1|
+|38    |      \genblk1[23].ff1  |ff_312                   |     1|
+|39    |      \genblk1[24].ff1  |ff_313                   |     1|
+|40    |      \genblk1[25].ff1  |ff_314                   |     1|
+|41    |      \genblk1[26].ff1  |ff_315                   |     1|
+|42    |      \genblk1[27].ff1  |ff_316                   |     1|
+|43    |      \genblk1[28].ff1  |ff_317                   |     1|
+|44    |      \genblk1[29].ff1  |ff_318                   |     1|
+|45    |      \genblk1[2].ff1   |ff_319                   |     1|
+|46    |      \genblk1[30].ff1  |ff_320                   |     1|
+|47    |      \genblk1[31].ff1  |ff_321                   |     1|
+|48    |      \genblk1[3].ff1   |ff_322                   |     1|
+|49    |      \genblk1[4].ff1   |ff_323                   |     1|
+|50    |      \genblk1[5].ff1   |ff_324                   |     1|
+|51    |      \genblk1[6].ff1   |ff_325                   |     1|
+|52    |      \genblk1[7].ff1   |ff_326                   |     1|
+|53    |      \genblk1[8].ff1   |ff_327                   |     1|
+|54    |      \genblk1[9].ff1   |ff_328                   |     1|
+|55    |    \genblk1[1].rm1     |reg_Nbit_1               |    33|
+|56    |      \genblk1[0].ff1   |ff_265                   |     2|
+|57    |      \genblk1[10].ff1  |ff_266                   |     1|
+|58    |      \genblk1[11].ff1  |ff_267                   |     1|
+|59    |      \genblk1[12].ff1  |ff_268                   |     1|
+|60    |      \genblk1[13].ff1  |ff_269                   |     1|
+|61    |      \genblk1[14].ff1  |ff_270                   |     1|
+|62    |      \genblk1[15].ff1  |ff_271                   |     1|
+|63    |      \genblk1[16].ff1  |ff_272                   |     1|
+|64    |      \genblk1[17].ff1  |ff_273                   |     1|
+|65    |      \genblk1[18].ff1  |ff_274                   |     1|
+|66    |      \genblk1[19].ff1  |ff_275                   |     1|
+|67    |      \genblk1[1].ff1   |ff_276                   |     1|
+|68    |      \genblk1[20].ff1  |ff_277                   |     1|
+|69    |      \genblk1[21].ff1  |ff_278                   |     1|
+|70    |      \genblk1[22].ff1  |ff_279                   |     1|
+|71    |      \genblk1[23].ff1  |ff_280                   |     1|
+|72    |      \genblk1[24].ff1  |ff_281                   |     1|
+|73    |      \genblk1[25].ff1  |ff_282                   |     1|
+|74    |      \genblk1[26].ff1  |ff_283                   |     1|
+|75    |      \genblk1[27].ff1  |ff_284                   |     1|
+|76    |      \genblk1[28].ff1  |ff_285                   |     1|
+|77    |      \genblk1[29].ff1  |ff_286                   |     1|
+|78    |      \genblk1[2].ff1   |ff_287                   |     1|
+|79    |      \genblk1[30].ff1  |ff_288                   |     1|
+|80    |      \genblk1[31].ff1  |ff_289                   |     1|
+|81    |      \genblk1[3].ff1   |ff_290                   |     1|
+|82    |      \genblk1[4].ff1   |ff_291                   |     1|
+|83    |      \genblk1[5].ff1   |ff_292                   |     1|
+|84    |      \genblk1[6].ff1   |ff_293                   |     1|
+|85    |      \genblk1[7].ff1   |ff_294                   |     1|
+|86    |      \genblk1[8].ff1   |ff_295                   |     1|
+|87    |      \genblk1[9].ff1   |ff_296                   |     1|
+|88    |    \genblk1[2].rm1     |reg_Nbit_2               |    32|
+|89    |      \genblk1[0].ff1   |ff_233                   |     1|
+|90    |      \genblk1[10].ff1  |ff_234                   |     1|
+|91    |      \genblk1[11].ff1  |ff_235                   |     1|
+|92    |      \genblk1[12].ff1  |ff_236                   |     1|
+|93    |      \genblk1[13].ff1  |ff_237                   |     1|
+|94    |      \genblk1[14].ff1  |ff_238                   |     1|
+|95    |      \genblk1[15].ff1  |ff_239                   |     1|
+|96    |      \genblk1[16].ff1  |ff_240                   |     1|
+|97    |      \genblk1[17].ff1  |ff_241                   |     1|
+|98    |      \genblk1[18].ff1  |ff_242                   |     1|
+|99    |      \genblk1[19].ff1  |ff_243                   |     1|
+|100   |      \genblk1[1].ff1   |ff_244                   |     1|
+|101   |      \genblk1[20].ff1  |ff_245                   |     1|
+|102   |      \genblk1[21].ff1  |ff_246                   |     1|
+|103   |      \genblk1[22].ff1  |ff_247                   |     1|
+|104   |      \genblk1[23].ff1  |ff_248                   |     1|
+|105   |      \genblk1[24].ff1  |ff_249                   |     1|
+|106   |      \genblk1[25].ff1  |ff_250                   |     1|
+|107   |      \genblk1[26].ff1  |ff_251                   |     1|
+|108   |      \genblk1[27].ff1  |ff_252                   |     1|
+|109   |      \genblk1[28].ff1  |ff_253                   |     1|
+|110   |      \genblk1[29].ff1  |ff_254                   |     1|
+|111   |      \genblk1[2].ff1   |ff_255                   |     1|
+|112   |      \genblk1[30].ff1  |ff_256                   |     1|
+|113   |      \genblk1[31].ff1  |ff_257                   |     1|
+|114   |      \genblk1[3].ff1   |ff_258                   |     1|
+|115   |      \genblk1[4].ff1   |ff_259                   |     1|
+|116   |      \genblk1[5].ff1   |ff_260                   |     1|
+|117   |      \genblk1[6].ff1   |ff_261                   |     1|
+|118   |      \genblk1[7].ff1   |ff_262                   |     1|
+|119   |      \genblk1[8].ff1   |ff_263                   |     1|
+|120   |      \genblk1[9].ff1   |ff_264                   |     1|
+|121   |    \genblk1[3].rm1     |reg_Nbit_3               |   166|
+|122   |      \genblk1[0].ff1   |ff_201                   |     5|
+|123   |      \genblk1[10].ff1  |ff_202                   |     5|
+|124   |      \genblk1[11].ff1  |ff_203                   |     5|
+|125   |      \genblk1[12].ff1  |ff_204                   |     5|
+|126   |      \genblk1[13].ff1  |ff_205                   |     6|
+|127   |      \genblk1[14].ff1  |ff_206                   |     5|
+|128   |      \genblk1[15].ff1  |ff_207                   |     5|
+|129   |      \genblk1[16].ff1  |ff_208                   |     5|
+|130   |      \genblk1[17].ff1  |ff_209                   |     5|
+|131   |      \genblk1[18].ff1  |ff_210                   |     6|
+|132   |      \genblk1[19].ff1  |ff_211                   |     5|
+|133   |      \genblk1[1].ff1   |ff_212                   |     5|
+|134   |      \genblk1[20].ff1  |ff_213                   |     5|
+|135   |      \genblk1[21].ff1  |ff_214                   |     5|
+|136   |      \genblk1[22].ff1  |ff_215                   |     5|
+|137   |      \genblk1[23].ff1  |ff_216                   |     6|
+|138   |      \genblk1[24].ff1  |ff_217                   |     5|
+|139   |      \genblk1[25].ff1  |ff_218                   |     5|
+|140   |      \genblk1[26].ff1  |ff_219                   |     5|
+|141   |      \genblk1[27].ff1  |ff_220                   |     5|
+|142   |      \genblk1[28].ff1  |ff_221                   |     6|
+|143   |      \genblk1[29].ff1  |ff_222                   |     5|
+|144   |      \genblk1[2].ff1   |ff_223                   |     5|
+|145   |      \genblk1[30].ff1  |ff_224                   |     5|
+|146   |      \genblk1[31].ff1  |ff_225                   |     6|
+|147   |      \genblk1[3].ff1   |ff_226                   |     5|
+|148   |      \genblk1[4].ff1   |ff_227                   |     5|
+|149   |      \genblk1[5].ff1   |ff_228                   |     5|
+|150   |      \genblk1[6].ff1   |ff_229                   |     5|
+|151   |      \genblk1[7].ff1   |ff_230                   |     5|
+|152   |      \genblk1[8].ff1   |ff_231                   |     6|
+|153   |      \genblk1[9].ff1   |ff_232                   |     5|
+|154   |    \genblk1[4].rm1     |reg_Nbit_4               |    32|
+|155   |      \genblk1[0].ff1   |ff_169                   |     1|
+|156   |      \genblk1[10].ff1  |ff_170                   |     1|
+|157   |      \genblk1[11].ff1  |ff_171                   |     1|
+|158   |      \genblk1[12].ff1  |ff_172                   |     1|
+|159   |      \genblk1[13].ff1  |ff_173                   |     1|
+|160   |      \genblk1[14].ff1  |ff_174                   |     1|
+|161   |      \genblk1[15].ff1  |ff_175                   |     1|
+|162   |      \genblk1[16].ff1  |ff_176                   |     1|
+|163   |      \genblk1[17].ff1  |ff_177                   |     1|
+|164   |      \genblk1[18].ff1  |ff_178                   |     1|
+|165   |      \genblk1[19].ff1  |ff_179                   |     1|
+|166   |      \genblk1[1].ff1   |ff_180                   |     1|
+|167   |      \genblk1[20].ff1  |ff_181                   |     1|
+|168   |      \genblk1[21].ff1  |ff_182                   |     1|
+|169   |      \genblk1[22].ff1  |ff_183                   |     1|
+|170   |      \genblk1[23].ff1  |ff_184                   |     1|
+|171   |      \genblk1[24].ff1  |ff_185                   |     1|
+|172   |      \genblk1[25].ff1  |ff_186                   |     1|
+|173   |      \genblk1[26].ff1  |ff_187                   |     1|
+|174   |      \genblk1[27].ff1  |ff_188                   |     1|
+|175   |      \genblk1[28].ff1  |ff_189                   |     1|
+|176   |      \genblk1[29].ff1  |ff_190                   |     1|
+|177   |      \genblk1[2].ff1   |ff_191                   |     1|
+|178   |      \genblk1[30].ff1  |ff_192                   |     1|
+|179   |      \genblk1[31].ff1  |ff_193                   |     1|
+|180   |      \genblk1[3].ff1   |ff_194                   |     1|
+|181   |      \genblk1[4].ff1   |ff_195                   |     1|
+|182   |      \genblk1[5].ff1   |ff_196                   |     1|
+|183   |      \genblk1[6].ff1   |ff_197                   |     1|
+|184   |      \genblk1[7].ff1   |ff_198                   |     1|
+|185   |      \genblk1[8].ff1   |ff_199                   |     1|
+|186   |      \genblk1[9].ff1   |ff_200                   |     1|
+|187   |    \genblk1[5].rm1     |reg_Nbit_5               |    32|
+|188   |      \genblk1[0].ff1   |ff_137                   |     1|
+|189   |      \genblk1[10].ff1  |ff_138                   |     1|
+|190   |      \genblk1[11].ff1  |ff_139                   |     1|
+|191   |      \genblk1[12].ff1  |ff_140                   |     1|
+|192   |      \genblk1[13].ff1  |ff_141                   |     1|
+|193   |      \genblk1[14].ff1  |ff_142                   |     1|
+|194   |      \genblk1[15].ff1  |ff_143                   |     1|
+|195   |      \genblk1[16].ff1  |ff_144                   |     1|
+|196   |      \genblk1[17].ff1  |ff_145                   |     1|
+|197   |      \genblk1[18].ff1  |ff_146                   |     1|
+|198   |      \genblk1[19].ff1  |ff_147                   |     1|
+|199   |      \genblk1[1].ff1   |ff_148                   |     1|
+|200   |      \genblk1[20].ff1  |ff_149                   |     1|
+|201   |      \genblk1[21].ff1  |ff_150                   |     1|
+|202   |      \genblk1[22].ff1  |ff_151                   |     1|
+|203   |      \genblk1[23].ff1  |ff_152                   |     1|
+|204   |      \genblk1[24].ff1  |ff_153                   |     1|
+|205   |      \genblk1[25].ff1  |ff_154                   |     1|
+|206   |      \genblk1[26].ff1  |ff_155                   |     1|
+|207   |      \genblk1[27].ff1  |ff_156                   |     1|
+|208   |      \genblk1[28].ff1  |ff_157                   |     1|
+|209   |      \genblk1[29].ff1  |ff_158                   |     1|
+|210   |      \genblk1[2].ff1   |ff_159                   |     1|
+|211   |      \genblk1[30].ff1  |ff_160                   |     1|
+|212   |      \genblk1[31].ff1  |ff_161                   |     1|
+|213   |      \genblk1[3].ff1   |ff_162                   |     1|
+|214   |      \genblk1[4].ff1   |ff_163                   |     1|
+|215   |      \genblk1[5].ff1   |ff_164                   |     1|
+|216   |      \genblk1[6].ff1   |ff_165                   |     1|
+|217   |      \genblk1[7].ff1   |ff_166                   |     1|
+|218   |      \genblk1[8].ff1   |ff_167                   |     1|
+|219   |      \genblk1[9].ff1   |ff_168                   |     1|
+|220   |    \genblk1[6].rm1     |reg_Nbit_6               |    32|
+|221   |      \genblk1[0].ff1   |ff_105                   |     1|
+|222   |      \genblk1[10].ff1  |ff_106                   |     1|
+|223   |      \genblk1[11].ff1  |ff_107                   |     1|
+|224   |      \genblk1[12].ff1  |ff_108                   |     1|
+|225   |      \genblk1[13].ff1  |ff_109                   |     1|
+|226   |      \genblk1[14].ff1  |ff_110                   |     1|
+|227   |      \genblk1[15].ff1  |ff_111                   |     1|
+|228   |      \genblk1[16].ff1  |ff_112                   |     1|
+|229   |      \genblk1[17].ff1  |ff_113                   |     1|
+|230   |      \genblk1[18].ff1  |ff_114                   |     1|
+|231   |      \genblk1[19].ff1  |ff_115                   |     1|
+|232   |      \genblk1[1].ff1   |ff_116                   |     1|
+|233   |      \genblk1[20].ff1  |ff_117                   |     1|
+|234   |      \genblk1[21].ff1  |ff_118                   |     1|
+|235   |      \genblk1[22].ff1  |ff_119                   |     1|
+|236   |      \genblk1[23].ff1  |ff_120                   |     1|
+|237   |      \genblk1[24].ff1  |ff_121                   |     1|
+|238   |      \genblk1[25].ff1  |ff_122                   |     1|
+|239   |      \genblk1[26].ff1  |ff_123                   |     1|
+|240   |      \genblk1[27].ff1  |ff_124                   |     1|
+|241   |      \genblk1[28].ff1  |ff_125                   |     1|
+|242   |      \genblk1[29].ff1  |ff_126                   |     1|
+|243   |      \genblk1[2].ff1   |ff_127                   |     1|
+|244   |      \genblk1[30].ff1  |ff_128                   |     1|
+|245   |      \genblk1[31].ff1  |ff_129                   |     1|
+|246   |      \genblk1[3].ff1   |ff_130                   |     1|
+|247   |      \genblk1[4].ff1   |ff_131                   |     1|
+|248   |      \genblk1[5].ff1   |ff_132                   |     1|
+|249   |      \genblk1[6].ff1   |ff_133                   |     1|
+|250   |      \genblk1[7].ff1   |ff_134                   |     1|
+|251   |      \genblk1[8].ff1   |ff_135                   |     1|
+|252   |      \genblk1[9].ff1   |ff_136                   |     1|
+|253   |    \genblk1[7].rm1     |reg_Nbit_7               |    96|
+|254   |      \genblk1[0].ff1   |ff_73                    |     3|
+|255   |      \genblk1[10].ff1  |ff_74                    |     3|
+|256   |      \genblk1[11].ff1  |ff_75                    |     3|
+|257   |      \genblk1[12].ff1  |ff_76                    |     3|
+|258   |      \genblk1[13].ff1  |ff_77                    |     3|
+|259   |      \genblk1[14].ff1  |ff_78                    |     3|
+|260   |      \genblk1[15].ff1  |ff_79                    |     3|
+|261   |      \genblk1[16].ff1  |ff_80                    |     3|
+|262   |      \genblk1[17].ff1  |ff_81                    |     3|
+|263   |      \genblk1[18].ff1  |ff_82                    |     3|
+|264   |      \genblk1[19].ff1  |ff_83                    |     3|
+|265   |      \genblk1[1].ff1   |ff_84                    |     3|
+|266   |      \genblk1[20].ff1  |ff_85                    |     3|
+|267   |      \genblk1[21].ff1  |ff_86                    |     3|
+|268   |      \genblk1[22].ff1  |ff_87                    |     3|
+|269   |      \genblk1[23].ff1  |ff_88                    |     3|
+|270   |      \genblk1[24].ff1  |ff_89                    |     3|
+|271   |      \genblk1[25].ff1  |ff_90                    |     3|
+|272   |      \genblk1[26].ff1  |ff_91                    |     3|
+|273   |      \genblk1[27].ff1  |ff_92                    |     3|
+|274   |      \genblk1[28].ff1  |ff_93                    |     3|
+|275   |      \genblk1[29].ff1  |ff_94                    |     3|
+|276   |      \genblk1[2].ff1   |ff_95                    |     3|
+|277   |      \genblk1[30].ff1  |ff_96                    |     3|
+|278   |      \genblk1[31].ff1  |ff_97                    |     3|
+|279   |      \genblk1[3].ff1   |ff_98                    |     3|
+|280   |      \genblk1[4].ff1   |ff_99                    |     3|
+|281   |      \genblk1[5].ff1   |ff_100                   |     3|
+|282   |      \genblk1[6].ff1   |ff_101                   |     3|
+|283   |      \genblk1[7].ff1   |ff_102                   |     3|
+|284   |      \genblk1[8].ff1   |ff_103                   |     3|
+|285   |      \genblk1[9].ff1   |ff_104                   |     3|
+|286   |    \genblk1[8].rm1     |reg_Nbit_8               |    32|
+|287   |      \genblk1[0].ff1   |ff_41                    |     1|
+|288   |      \genblk1[10].ff1  |ff_42                    |     1|
+|289   |      \genblk1[11].ff1  |ff_43                    |     1|
+|290   |      \genblk1[12].ff1  |ff_44                    |     1|
+|291   |      \genblk1[13].ff1  |ff_45                    |     1|
+|292   |      \genblk1[14].ff1  |ff_46                    |     1|
+|293   |      \genblk1[15].ff1  |ff_47                    |     1|
+|294   |      \genblk1[16].ff1  |ff_48                    |     1|
+|295   |      \genblk1[17].ff1  |ff_49                    |     1|
+|296   |      \genblk1[18].ff1  |ff_50                    |     1|
+|297   |      \genblk1[19].ff1  |ff_51                    |     1|
+|298   |      \genblk1[1].ff1   |ff_52                    |     1|
+|299   |      \genblk1[20].ff1  |ff_53                    |     1|
+|300   |      \genblk1[21].ff1  |ff_54                    |     1|
+|301   |      \genblk1[22].ff1  |ff_55                    |     1|
+|302   |      \genblk1[23].ff1  |ff_56                    |     1|
+|303   |      \genblk1[24].ff1  |ff_57                    |     1|
+|304   |      \genblk1[25].ff1  |ff_58                    |     1|
+|305   |      \genblk1[26].ff1  |ff_59                    |     1|
+|306   |      \genblk1[27].ff1  |ff_60                    |     1|
+|307   |      \genblk1[28].ff1  |ff_61                    |     1|
+|308   |      \genblk1[29].ff1  |ff_62                    |     1|
+|309   |      \genblk1[2].ff1   |ff_63                    |     1|
+|310   |      \genblk1[30].ff1  |ff_64                    |     1|
+|311   |      \genblk1[31].ff1  |ff_65                    |     1|
+|312   |      \genblk1[3].ff1   |ff_66                    |     1|
+|313   |      \genblk1[4].ff1   |ff_67                    |     1|
+|314   |      \genblk1[5].ff1   |ff_68                    |     1|
+|315   |      \genblk1[6].ff1   |ff_69                    |     1|
+|316   |      \genblk1[7].ff1   |ff_70                    |     1|
+|317   |      \genblk1[8].ff1   |ff_71                    |     1|
+|318   |      \genblk1[9].ff1   |ff_72                    |     1|
+|319   |    \genblk1[9].rm1     |reg_Nbit_9               |    32|
+|320   |      \genblk1[0].ff1   |ff                       |     1|
+|321   |      \genblk1[10].ff1  |ff_10                    |     1|
+|322   |      \genblk1[11].ff1  |ff_11                    |     1|
+|323   |      \genblk1[12].ff1  |ff_12                    |     1|
+|324   |      \genblk1[13].ff1  |ff_13                    |     1|
+|325   |      \genblk1[14].ff1  |ff_14                    |     1|
+|326   |      \genblk1[15].ff1  |ff_15                    |     1|
+|327   |      \genblk1[16].ff1  |ff_16                    |     1|
+|328   |      \genblk1[17].ff1  |ff_17                    |     1|
+|329   |      \genblk1[18].ff1  |ff_18                    |     1|
+|330   |      \genblk1[19].ff1  |ff_19                    |     1|
+|331   |      \genblk1[1].ff1   |ff_20                    |     1|
+|332   |      \genblk1[20].ff1  |ff_21                    |     1|
+|333   |      \genblk1[21].ff1  |ff_22                    |     1|
+|334   |      \genblk1[22].ff1  |ff_23                    |     1|
+|335   |      \genblk1[23].ff1  |ff_24                    |     1|
+|336   |      \genblk1[24].ff1  |ff_25                    |     1|
+|337   |      \genblk1[25].ff1  |ff_26                    |     1|
+|338   |      \genblk1[26].ff1  |ff_27                    |     1|
+|339   |      \genblk1[27].ff1  |ff_28                    |     1|
+|340   |      \genblk1[28].ff1  |ff_29                    |     1|
+|341   |      \genblk1[29].ff1  |ff_30                    |     1|
+|342   |      \genblk1[2].ff1   |ff_31                    |     1|
+|343   |      \genblk1[30].ff1  |ff_32                    |     1|
+|344   |      \genblk1[31].ff1  |ff_33                    |     1|
+|345   |      \genblk1[3].ff1   |ff_34                    |     1|
+|346   |      \genblk1[4].ff1   |ff_35                    |     1|
+|347   |      \genblk1[5].ff1   |ff_36                    |     1|
+|348   |      \genblk1[6].ff1   |ff_37                    |     1|
+|349   |      \genblk1[7].ff1   |ff_38                    |     1|
+|350   |      \genblk1[8].ff1   |ff_39                    |     1|
+|351   |      \genblk1[9].ff1   |ff_40                    |     1|
++------+------------------------+-------------------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:35 ; elapsed = 00:00:38 . Memory (MB): peak = 659.941 ; gain = 450.395
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 601 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:27 ; elapsed = 00:00:30 . Memory (MB): peak = 659.941 ; gain = 113.469
+Synthesis Optimization Complete : Time (s): cpu = 00:00:36 ; elapsed = 00:00:38 . Memory (MB): peak = 659.941 ; gain = 450.395
+INFO: [Project 1-571] Translating synthesized netlist
+INFO: [Netlist 29-17] Analyzing 77 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 35 instances were transformed.
+  LD => LDCE: 3 instances
+  RAM64X1S => RAM64X1S (RAMS64E): 32 instances
+
+INFO: [Common 17-83] Releasing license: Synthesis
+273 Infos, 139 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:36 ; elapsed = 00:00:37 . Memory (MB): peak = 659.941 ; gain = 437.395
+INFO: [Common 17-1381] The checkpoint 'C:/Users/farna/Desktop/Labs/Lab 6/exp1/exp1.runs/synth_1/processor.dcp' has been generated.
+report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.021 . Memory (MB): peak = 659.941 ; gain = 0.000
+INFO: [Common 17-206] Exiting Vivado at Tue Mar 10 14:30:43 2020...

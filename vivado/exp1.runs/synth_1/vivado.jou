@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2016.4 (64-bit)
+# SW Build 1733598 on Wed Dec 14 22:35:39 MST 2016
+# IP Build 1731160 on Wed Dec 14 23:47:21 MST 2016
+# Start of session at: Tue Mar 10 14:30:02 2020
+# Process ID: 11900
+# Current directory: C:/Users/farna/Desktop/Labs/Lab 6/exp1/exp1.runs/synth_1
+# Command line: vivado.exe -log processor.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source processor.tcl
+# Log file: C:/Users/farna/Desktop/Labs/Lab 6/exp1/exp1.runs/synth_1/processor.vds
+# Journal file: C:/Users/farna/Desktop/Labs/Lab 6/exp1/exp1.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source processor.tcl -notrace

@@ -1,0 +1,76 @@
+Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
+--------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2016.4 (win64) Build 1733598 Wed Dec 14 22:35:39 MST 2016
+| Date         : Tue Mar 10 14:31:17 2020
+| Host         : CSE-P07-2168-12 running 64-bit major release  (build 9200)
+| Command      : report_control_sets -verbose -file processor_control_sets_placed.rpt
+| Design       : processor
+| Device       : xc7a100t
+--------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Flip-Flop Distribution
+3. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Number of unique control sets                            |    14 |
+| Unused register locations in slices containing registers |    13 |
++----------------------------------------------------------+-------+
+
+
+2. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |              23 |            7 |
+| No           | No                    | Yes                    |              12 |            9 |
+| No           | Yes                   | No                     |               0 |            0 |
+| Yes          | No                    | No                     |               0 |            0 |
+| Yes          | No                    | Yes                    |             320 |          185 |
+| Yes          | Yes                   | No                     |               0 |            0 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+3. Detailed Control Set Information
+-----------------------------------
+
++-------------------------+----------------------------+----------------------------------------------------+------------------+----------------+
+|       Clock Signal      |        Enable Signal       |                  Set/Reset Signal                  | Slice Load Count | Bel Load Count |
++-------------------------+----------------------------+----------------------------------------------------+------------------+----------------+
+|  PC/genblk1[3].ff1/E[0] |                            |                                                    |                2 |              3 |
+|  push_IBUF_BUFG         |                            | RegisterFile/genblk1[1].rm1/genblk1[0].ff1/Q_reg_0 |                9 |             12 |
+|  clk_IBUF_BUFG          |                            |                                                    |                5 |             20 |
+|  push_IBUF_BUFG         | PC/genblk1[3].ff1/MemWrite |                                                    |                8 |             32 |
+|  push_IBUF_BUFG         | PC/genblk1[5].ff1/Q_reg_1  | RegisterFile/genblk1[1].rm1/genblk1[0].ff1/Q_reg_0 |               19 |             32 |
+|  push_IBUF_BUFG         | PC/genblk1[5].ff1/Q_reg_55 | RegisterFile/genblk1[1].rm1/genblk1[0].ff1/Q_reg_0 |               17 |             32 |
+|  push_IBUF_BUFG         | PC/genblk1[5].ff1/Q_reg_56 | RegisterFile/genblk1[1].rm1/genblk1[0].ff1/Q_reg_0 |               16 |             32 |
+|  push_IBUF_BUFG         | PC/genblk1[5].ff1/p_39_in  | RegisterFile/genblk1[1].rm1/genblk1[0].ff1/Q_reg_0 |               20 |             32 |
+|  push_IBUF_BUFG         | PC/genblk1[5].ff1/p_47_in  | RegisterFile/genblk1[1].rm1/genblk1[0].ff1/Q_reg_0 |               22 |             32 |
+|  push_IBUF_BUFG         | PC/genblk1[5].ff1/p_49_in  | RegisterFile/genblk1[1].rm1/genblk1[0].ff1/Q_reg_0 |               15 |             32 |
+|  push_IBUF_BUFG         | PC/genblk1[5].ff1/p_51_in  | RegisterFile/genblk1[1].rm1/genblk1[0].ff1/Q_reg_0 |               20 |             32 |
+|  push_IBUF_BUFG         | PC/genblk1[5].ff1/p_55_in  | RegisterFile/genblk1[1].rm1/genblk1[0].ff1/Q_reg_0 |               18 |             32 |
+|  push_IBUF_BUFG         | PC/genblk1[5].ff1/p_57_in  | RegisterFile/genblk1[1].rm1/genblk1[0].ff1/Q_reg_0 |               21 |             32 |
+|  push_IBUF_BUFG         | PC/genblk1[5].ff1/p_59_in  | RegisterFile/genblk1[1].rm1/genblk1[0].ff1/Q_reg_0 |               17 |             32 |
++-------------------------+----------------------------+----------------------------------------------------+------------------+----------------+
+
+
++--------+-----------------------+
+| Fanout | Number of ControlSets |
++--------+-----------------------+
+| 3      |                     1 |
+| 12     |                     1 |
+| 16+    |                    12 |
++--------+-----------------------+
+
+
