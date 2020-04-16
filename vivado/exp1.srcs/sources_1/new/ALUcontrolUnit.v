@@ -22,10 +22,19 @@ always@(*)begin
     
     //the rest 
     case({ALUop,in1,in2})
-        6'b100000: ALUsel <= 4'b0010;   //Add
-        6'b100001: ALUsel <= 4'b0110;   //Sub
-        6'b101110: ALUsel <= 4'b0000;   //AND
-        6'b101100: ALUsel <= 4'b0001;   //OR
+        6'b100000: ALUsel <= 4'b00_00;   //Add
+        6'b100001: ALUsel <= 4'b00_01;   //Sub
+        6'b101110: ALUsel <= 4'b01_01;   //AND
+        6'b101100: ALUsel <= 4'b01_00;   //OR
+        
+        6'b101000: ALUsel <= 4'b01_11;   //XOR
+        6'b100100: ALUsel <= 4'b11_01;   //SLT
+        6'b100110: ALUsel <= 4'b11_11;   //SLTU
+
+        6'b100010: ALUsel <= 4'b0001;   //SLL 
+        6'b101010: ALUsel <= 4'b0001;   //SRL
+        6'b101011: ALUsel <= 4'b0001;   //SRA
+
     endcase
         
 
