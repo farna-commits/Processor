@@ -42,7 +42,11 @@ module processor
     wire [3:0]ALUcontrolSelect;
     //ALU
     wire ALUzeroFlag;
+    wire ALUcf;
+    wire ALUvf;
+    wire ALUsf;
     wire [31:0]ALUResult;
+    wire [4:0]  ALUshamt;
     //Data Memory
     wire [N-1:0]DataMem_ReadData;
     //MUX
@@ -72,11 +76,10 @@ module processor
     controlUnit Control_Unit                    (.inst(Instruction[6:0]),.branch(Branch),.memread(MemRead),.mem2reg(Mem2Reg),.ALUop(ALUop),.memwrite(MemWrite),.ALUsrc(ALUsrc),.regwrite(RegWrite)); //control unit
     ImmGen  immediateGenerator                  (.gen_out(ImmGeneratorOutput),.inst(Instruction));    //Imm gen
     ALUcontrolUnit  ALU_Control_Unit            (.ALUop(ALUop),.in1(Instruction[14:12]),.in2(Instruction[30]),.ALUsel(ALUcontrolSelect));   //aluControl
-    ALU ALU1                                    (.a(ReadData1),.b(RF_MUX_out),.selection(ALUcontrolSelect),.out(ALUResult),.ZF(ALUzeroFlag));  //ALU (a-b)
+    ALU ALU1                                    (.a(ReadData1),.b(RF_MUX_out),.selection(ALUcontrolSelect),.out(ALUResult),.ZF(ALUzeroFlag), .shamt(ReadData2), .CF(ALUcf), .VF(ALUvf), .SF(ALUsf));  //ALU (a-b)
     DataMem DataMemory                          (.clk(push),.MemRead(MemRead),.MemWrite(MemWrite),.addr(ALUResult[7:2]),.data_in(ReadData2),.data_out(DataMem_ReadData));   //datamemory
     adderUnit   Adder2                          (.a(pcOutput),.b(shifterOutput),.cout(dontCareAdder2),.sum(adder2));  //adder of imm
     adderUnit   Adder1                          (.a(pcOutput),.b(4'b0100),.cout(dontCareAdder1),.sum(adder1));        //inc of pc
-    
     //MUXES
     mux_2to1    #(31)MUX_RF                     (.a(ImmGeneratorOutput),.b(ReadData2),.s(ALUsrc),.out(RF_MUX_out));   //RF MUX (bet reg file and alu)
     mux_2to1    #(31)MUX_DataMem                (.a(DataMem_ReadData),.b(ALUResult),.s(Mem2Reg),.out(DM_MUX_out));   //data memory mux
