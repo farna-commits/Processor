@@ -74,7 +74,7 @@ module processor
     InstMem InstructionMemory                   (.addr(pcOutput[7:2]), .data_out(Instruction));    //inst memory
     regFile RegisterFile                        (.r1(Instruction[19:15]), .r2(Instruction[24:20]),.wr(Instruction[11:7]),.wd(DM_MUX_out),.wen(RegWrite),.clk(push),.rst(rst),.rdata1(ReadData1),.rdata2(ReadData2)); //reg file
     controlUnit Control_Unit                    (.inst(Instruction[6:0]),.branch(Branch),.memread(MemRead),.mem2reg(Mem2Reg),.ALUop(ALUop),.memwrite(MemWrite),.ALUsrc(ALUsrc),.regwrite(RegWrite)); //control unit
-    ImmGen  immediateGenerator                  (.gen_out(ImmGeneratorOutput),.inst(Instruction));    //Imm gen
+    ImmGen  immediateGenerator                  (.Imm(ImmGeneratorOutput),.IR(Instruction));    //Imm gen
     ALUcontrolUnit  ALU_Control_Unit            (.ALUop(ALUop),.in1(Instruction[14:12]),.in2(Instruction[30]),.ALUsel(ALUcontrolSelect));   //aluControl
     ALU ALU1                                    (.a(ReadData1),.b(RF_MUX_out),.selection(ALUcontrolSelect),.out(ALUResult),.ZF(ALUzeroFlag), .shamt(ReadData2), .CF(ALUcf), .VF(ALUvf), .SF(ALUsf));  //ALU (a-b)
     DataMem DataMemory                          (.clk(push),.MemRead(MemRead),.MemWrite(MemWrite),.addr(ALUResult[7:2]),.data_in(ReadData2),.data_out(DataMem_ReadData));   //datamemory

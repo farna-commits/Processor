@@ -2,8 +2,6 @@
 <GenRun Id="synth_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1583843401">
   <File Type="PA-TCL" Name="processor.tcl"/>
   <File Type="RDS-RDS" Name="processor.vds"/>
-  <File Type="RDS-UTIL" Name="processor_utilization_synth.rpt"/>
-  <File Type="RDS-UTIL-PB" Name="processor_utilization_synth.pb"/>
   <File Type="RDS-DCP" Name="processor.dcp"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
     <Filter Type="Srcs"/>
