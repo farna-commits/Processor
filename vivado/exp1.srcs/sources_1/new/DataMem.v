@@ -18,6 +18,7 @@ reg [N-1:0] mem [0:63];
 initial begin
     mem[0]=32'd17;
     mem[1]=32'd9; 
+    //mem[1]=32'd4294934399;   // 32639 --> 15 (1's) in binary; 127 --> 7 (1's) in binary (using 0 sign extension)
     mem[2]=32'sb11111111111111111111111111100111;    //-25  
     mem[3]=32'd262144; 
     mem[4]=32'sb11111111111111111111111111100111; 
@@ -44,7 +45,13 @@ end
 //writing  
 always@ (posedge clk) begin
     if (MemWrite) begin
-        mem[addr] = data_in;
-    end        
+        case(func3)
+            3'b010: mem[addr] = data_in; //SW
+            3'b001: mem[addr] = { {16{data_in[15]}},data_in[15:0] }; //SH
+            3'b000: mem[addr] = { {24{data_in[7]}},data_in[7:0] }; //SB
+        endcase       
+     end        
+
 end
 endmodule
+

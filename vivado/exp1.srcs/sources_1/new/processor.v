@@ -40,6 +40,7 @@ module processor
     wire [N-1:0]ImmGeneratorOutput;
     //ALU CONTROL
     wire [3:0]ALUcontrolSelect;
+    wire [6:0]opcode;
     //ALU
     wire ALUzeroFlag;
     wire ALUcf;
@@ -53,6 +54,8 @@ module processor
     wire [N-1:0]RF_MUX_out;
     wire [N-1:0]DM_MUX_out;
     wire [N-1:0]Adder_MUX;
+    wire [1:0] Adder_MUX_select_temp;
+    wire [1:0] Adder_MUX_select;
     //shifter
     wire [N-1:0]shifterOutput;
     //Adders
@@ -60,11 +63,16 @@ module processor
     wire [N-1:0]adder2;
     wire dontCareAdder1;
     wire dontCareAdder2;
+    //JAL & JALR select
+    wire JUMP;
     //driver
     reg [12:0]numDisplayed;
     //enable
     wire en;
+    //assginment
     assign en =1;
+    //assign Adder_MUX_select_temp = ((JUMP& Branch) | (ALUzeroFlag & Branch)) ?  2'b01 : Adder_MUX_select ;
+    assign Adder_MUX_select= ((JUMP) ?  2'b10:  2'b00);
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
@@ -73,18 +81,19 @@ module processor
     reg_Nbit PC                                 (.clk(push), .en(en), .rst(rst),.D(Adder_MUX), .Q(pcOutput));   //PC
     InstMem InstructionMemory                   (.addr(pcOutput[7:2]), .data_out(Instruction));    //inst memory
     regFile RegisterFile                        (.r1(Instruction[19:15]), .r2(Instruction[24:20]),.wr(Instruction[11:7]),.wd(DM_MUX_out),.wen(RegWrite),.clk(push),.rst(rst),.rdata1(ReadData1),.rdata2(ReadData2)); //reg file
-    controlUnit Control_Unit                    (.inst(Instruction[6:0]),.branch(Branch),.memread(MemRead),.mem2reg(Mem2Reg),.ALUop(ALUop),.memwrite(MemWrite),.ALUsrc(ALUsrc),.regwrite(RegWrite)); //control unit
+    controlUnit Control_Unit                    (.inst(Instruction[6:0]),.branch(Branch),.memread(MemRead),.mem2reg(Mem2Reg),.ALUop(ALUop),.memwrite(MemWrite),.ALUsrc(ALUsrc),.regwrite(RegWrite),.JUMP(JUMP)); //control unit
     ImmGen  immediateGenerator                  (.Imm(ImmGeneratorOutput),.IR(Instruction));    //Imm gen
-    ALUcontrolUnit  ALU_Control_Unit            (.ALUop(ALUop),.in1(Instruction[14:12]),.in2(Instruction[30]),.ALUsel(ALUcontrolSelect), .memRead(MemRead));   //aluControl
+    ALUcontrolUnit  ALU_Control_Unit            (.ALUop(ALUop),.in1(Instruction[14:12]),.in2(Instruction[30]),.ALUsel(ALUcontrolSelect), .opcode(Instruction[6:0]));   //aluControl
     ALU ALU1                                    (.a(ReadData1),.b(RF_MUX_out),.selection(ALUcontrolSelect),.out(ALUResult),.ZF(ALUzeroFlag), .shamt(ReadData2), .CF(ALUcf), .VF(ALUvf), .SF(ALUsf));  //ALU (a-b)
-    DataMem DataMemory                          (.clk(push),.MemRead(MemRead),.MemWrite(MemWrite),.addr(ALUResult[7:2]),.data_in(ReadData2),.data_out(DataMem_ReadData), .func3(Instruction[14:12]));   //datamemory
+    DataMem DataMemory                          (.clk(push),.MemRead(MemRead),.MemWrite(MemWrite),.addr(ALUResult[7:2]),.data_in(ReadData2),.data_out(DataMem_ReadData),.func3(Instruction[14:12]));   //datamemory
     adderUnit   Adder2                          (.a(pcOutput),.b(shifterOutput),.cout(dontCareAdder2),.sum(adder2));  //adder of imm
     adderUnit   Adder1                          (.a(pcOutput),.b(4'b0100),.cout(dontCareAdder1),.sum(adder1));        //inc of pc
     //MUXES
     mux_2to1    #(31)MUX_RF                     (.a(ImmGeneratorOutput),.b(ReadData2),.s(ALUsrc),.out(RF_MUX_out));   //RF MUX (bet reg file and alu)
-    mux_2to1    #(31)MUX_DataMem                (.a(DataMem_ReadData),.b(ALUResult),.s(Mem2Reg),.out(DM_MUX_out));   //data memory mux
-    mux_2to1    #(31)MUX_Adder                  (.a(adder2),.b(adder1),.s(ALUzeroFlag & Branch),.out(Adder_MUX));   //adder mux
-    
+    mux_4to1    #(31)MUX_DataMem                (.a(DataMem_ReadData),.b(ALUResult),.c(adder1),.d(0),.s((JUMP) ? 2'b10 :(Mem2Reg)),.out(DM_MUX_out));   //data memory mux
+    mux_4to1    #(31)MUX_Adder                  (.a(adder2),.b(adder1),.c(ALUResult),.d(0),.s((JUMP) ? 2'b10 :(ALUzeroFlag & Branch)),.out(Adder_MUX));   //adder mux
+   // mux_4to1    #(31)MUX_Adder                  (.a(adder2),.b(adder1),.c(ALUResult),.d(0),.s(1),.out(Adder_MUX));   //adder mux
+    //mux_4to1    #(31)MUX_Adder                  (.a(adder2),.b(adder1),.c(ALUResult),.d(0),.s(1),.out(Adder_MUX));   //adder mux
     //shifter
     shifter_nBit    shiftLeft1                  (.a(ImmGeneratorOutput), .out(shifterOutput));
     
@@ -123,6 +132,20 @@ module processor
     
     end
 
+//((JUMP& Branch) | (ALUzeroFlag & Branch)) ? 2'b01 :((JUMP) ?  2'b10:  2'b00)
+
+
+//    always @(*) begin
+//        if ((JUMP& Branch) | (ALUzeroFlag & Branch)) begin
+         
+//            Adder_MUX_select = 2'b01;
+//        end else 
+//            if(JUMP) begin
+//                Adder_MUX_select = 2'b10;            
+//            end else begin
+//             Adder_MUX_select = 2'b00;            
+//        end
+//    end
 
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 endmodule
