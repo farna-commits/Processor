@@ -1,5 +1,6 @@
 `include "defines.v"
 module ImmGen
+
 #(parameter N =32)
 (
     output reg [N-1:0] Imm, 
