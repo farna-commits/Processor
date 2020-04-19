@@ -30,9 +30,9 @@ always@ (*) begin
     if (MemRead) begin
         case(func3)
             3'b010: data_out = mem[addr]; //LW
-            3'b001: data_out = { {16{mem[addr][31]}},mem[addr][15:0] }; //LH
+            3'b001: data_out = { {16{mem[addr][15]}},mem[addr][15:0] }; //LH
             3'b101: data_out = { 16'h0000,mem[addr][15:0] }; //LHU
-            3'b000: data_out = { {24{mem[addr][31]}},mem[addr][7:0] }; //LB
+            3'b000: data_out = { {24{mem[addr][7]}},mem[addr][7:0] }; //LB
             3'b100: data_out = { 24'h000000,mem[addr][7:0] }; //LBU
         endcase
         
