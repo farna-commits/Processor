@@ -7,7 +7,7 @@ module ALU
 (
     input wire [N-1:0]a,
     input wire [N-1:0]b,
-    input wire [N-1:0]  shamt,
+    input wire [4:0]  shamt,
     input wire [3:0]selection,
     output reg [N-1:0]out,
     output wire ZF, CF, VF, SF
@@ -46,9 +46,13 @@ module ALU
             4'b01_01:  out  = a & b;    //AND
             4'b01_11:  out  = a ^ b;    //XOR
             // shift   
-            4'b10_00:  out  =   sh;        //sll
-            4'b10_01:  out  =   sh;        //SRL
-            4'b10_10:  out  =   sh;        //sra
+            4'b10_00:  out  =   sh;        //slli
+            4'b10_01:  out  =   sh;        //SRLi
+            4'b10_10:  out  =   sh;        //srai
+             // shift 
+            4'b00_10:  out  =   a <<  b;        //sll
+            4'b01_10:  out  =   a >>  b;        //SRL
+            4'b10_11:  out  =   a >>> b;        //sra
             // slt & sltu
             4'b11_01:  out = {31'b0,(SF != VF)};   //SLT
             4'b11_11:  out = {31'b0,(~CF)};        //SLTU 
