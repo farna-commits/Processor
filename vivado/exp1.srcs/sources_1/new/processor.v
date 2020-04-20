@@ -72,11 +72,7 @@ module processor
     //assginment
     assign en =1;
     //assign Adder_MUX_select_temp = ((JUMP& Branch) | (ALUzeroFlag & Branch)) ?  2'b01 : Adder_MUX_select ;
-<<<<<<< HEAD
-    //assign Adder_MUX_select= ((JUMP) ?  2'b10:  2'b00);
-=======
     assign Adder_MUX_select= ((JUMP) ?  2'b10:  2'b00);
->>>>>>> staging-master
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
@@ -88,27 +84,17 @@ module processor
     controlUnit Control_Unit                    (.inst(Instruction[6:0]),.branch(Branch),.memread(MemRead),.mem2reg(Mem2Reg),.ALUop(ALUop),.memwrite(MemWrite),.ALUsrc(ALUsrc),.regwrite(RegWrite),.JUMP(JUMP)); //control unit
     ImmGen  immediateGenerator                  (.Imm(ImmGeneratorOutput),.IR(Instruction));    //Imm gen
     ALUcontrolUnit  ALU_Control_Unit            (.ALUop(ALUop),.in1(Instruction[14:12]),.in2(Instruction[30]),.ALUsel(ALUcontrolSelect), .opcode(Instruction[6:0]));   //aluControl
-<<<<<<< HEAD
-    ALU ALU1                                    (.a(ReadData1),.b(RF_MUX_out),.selection(ALUcontrolSelect),.out(ALUResult),.ZF(ALUzeroFlag), .shamt(ReadData2), .CF(ALUcf), .VF(ALUvf), .SF(ALUsf));  //ALU (a-b)
-=======
     //ALU ALU1                                    (.a(ReadData1),.b(RF_MUX_out),.selection(ALUcontrolSelect),.out(ALUResult),.ZF(ALUzeroFlag), .shamt(Instruction[24:20]), .CF(ALUcf), .VF(ALUvf), .SF(ALUsf), .ALUsrc(ALUsrc));  //ALU (a-b)
      ALU ALU1                                    (.a(ReadData1),.b(RF_MUX_out),.selection(ALUcontrolSelect),.out(ALUResult),.ZF(ALUzeroFlag), .shamt(Instruction[24:20]), .CF(ALUcf), .VF(ALUvf), .SF(ALUsf));
->>>>>>> staging-master
     DataMem DataMemory                          (.clk(push),.MemRead(MemRead),.MemWrite(MemWrite),.addr(ALUResult[7:2]),.data_in(ReadData2),.data_out(DataMem_ReadData),.func3(Instruction[14:12]));   //datamemory
     adderUnit   Adder2                          (.a(pcOutput),.b(shifterOutput),.cout(dontCareAdder2),.sum(adder2));  //adder of imm
     adderUnit   Adder1                          (.a(pcOutput),.b(4'b0100),.cout(dontCareAdder1),.sum(adder1));        //inc of pc
     //MUXES
     mux_2to1    #(31)MUX_RF                     (.a(ImmGeneratorOutput),.b(ReadData2),.s(ALUsrc),.out(RF_MUX_out));   //RF MUX (bet reg file and alu)
     mux_4to1    #(31)MUX_DataMem                (.a(DataMem_ReadData),.b(ALUResult),.c(adder1),.d(0),.s((JUMP) ? 2'b10 :(Mem2Reg)),.out(DM_MUX_out));   //data memory mux
-<<<<<<< HEAD
-    //mux_4to1    #(31)MUX_Adder                  (.a(adder2),.b(adder1),.c(ALUResult),.d(0),.s((JUMP) ? 2'b10 :(ALUzeroFlag & Branch)),.out(Adder_MUX));   //adder mux
-   //mux_4to1    #(31)MUX_Adder                  (.a(adder2),.b(adder1),.c(ALUResult),.d(0),.s(1),.out(Adder_MUX));   //adder mux
-    mux_4to1    #(31)MUX_Adder                  (.a(adder2),.b(adder1),.c(ALUResult),.d(0),.s( ((JUMP& Branch) | (ALUzeroFlag & Branch)) ? 2'b01 :((JUMP) ?  2'b10:  2'b00)),.out(Adder_MUX));   //adder mux
-=======
     mux_4to1    #(31)MUX_Adder                  (.a(adder2),.b(adder1),.c(ALUResult),.d(0),.s((JUMP) ? 2'b10 :(ALUzeroFlag & Branch)),.out(Adder_MUX));   //adder mux
    // mux_4to1    #(31)MUX_Adder                  (.a(adder2),.b(adder1),.c(ALUResult),.d(0),.s(1),.out(Adder_MUX));   //adder mux
     //mux_4to1    #(31)MUX_Adder                  (.a(adder2),.b(adder1),.c(ALUResult),.d(0),.s(1),.out(Adder_MUX));   //adder mux
->>>>>>> staging-master
     //shifter
     shifter_nBit    shiftLeft1                  (.a(ImmGeneratorOutput), .out(shifterOutput));
     
