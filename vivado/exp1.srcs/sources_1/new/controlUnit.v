@@ -24,7 +24,6 @@ module controlUnit
             5'b11000: {branch,memread,mem2reg,ALUop[1:0],memwrite,ALUsrc,regwrite,JUMP} = 9'b100010000;   //beq  
             5'b00100: {branch,memread,mem2reg,ALUop[1:0],memwrite,ALUsrc,regwrite,JUMP} = 9'b000000110;   //I format (arith)  
             5'b11001: {branch,memread,mem2reg,ALUop[1:0],memwrite,ALUsrc,regwrite,JUMP} = 9'b000000111;   //I format (JALR)  
-            //5'b11011: {branch,memread,mem2reg,ALUop[1:0],memwrite,ALUsrc,regwrite,JUMP} = 9'b100000111;   //UJ format (JAL)
             5'b11011: {branch,memread,mem2reg,ALUop[1:0],memwrite,ALUsrc,regwrite,JUMP} = 9'b100010111;   //UJ format (JAL)  
 
         endcase

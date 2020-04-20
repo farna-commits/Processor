@@ -46,6 +46,8 @@ module processor
     wire ALUcf;
     wire ALUvf;
     wire ALUsf;
+    wire ALUnef, ALUgtef, ALUltf, ALUltuf, ALUgeuf;
+    wire branchGateOut;
     wire [31:0]ALUResult;
     wire [4:0]  ALUshamt;
     //Data Memory
@@ -54,8 +56,6 @@ module processor
     wire [N-1:0]RF_MUX_out;
     wire [N-1:0]DM_MUX_out;
     wire [N-1:0]Adder_MUX;
-    wire [1:0] Adder_MUX_select_temp;
-    wire [1:0] Adder_MUX_select;
     //shifter
     wire [N-1:0]shifterOutput;
     //Adders
@@ -71,8 +71,6 @@ module processor
     wire en;
     //assginment
     assign en =1;
-    //assign Adder_MUX_select_temp = ((JUMP& Branch) | (ALUzeroFlag & Branch)) ?  2'b01 : Adder_MUX_select ;
-    assign Adder_MUX_select= ((JUMP) ?  2'b10:  2'b00);
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
@@ -85,22 +83,22 @@ module processor
     ImmGen  immediateGenerator                  (.Imm(ImmGeneratorOutput),.IR(Instruction));    //Imm gen
     ALUcontrolUnit  ALU_Control_Unit            (.ALUop(ALUop),.in1(Instruction[14:12]),.in2(Instruction[30]),.ALUsel(ALUcontrolSelect), .opcode(Instruction[6:0]));   //aluControl
     //ALU ALU1                                    (.a(ReadData1),.b(RF_MUX_out),.selection(ALUcontrolSelect),.out(ALUResult),.ZF(ALUzeroFlag), .shamt(Instruction[24:20]), .CF(ALUcf), .VF(ALUvf), .SF(ALUsf), .ALUsrc(ALUsrc));  //ALU (a-b)
-     ALU ALU1                                    (.a(ReadData1),.b(RF_MUX_out),.selection(ALUcontrolSelect),.out(ALUResult),.ZF(ALUzeroFlag), .shamt(Instruction[24:20]), .CF(ALUcf), .VF(ALUvf), .SF(ALUsf));
+    ALU ALU1                                    (.a(ReadData1),.b(RF_MUX_out),.selection(ALUcontrolSelect),.out(ALUResult),.ZF(ALUzeroFlag), .shamt(Instruction[24:20]), .CF(ALUcf), .VF(ALUvf), .SF(ALUsf), .NEF(ALUnef), .GTEF(ALUgtef), .LTF(ALUltf), .LTUF(ALUltuf), .GEUF(ALUgeuf));
     DataMem DataMemory                          (.clk(push),.MemRead(MemRead),.MemWrite(MemWrite),.addr(ALUResult[7:2]),.data_in(ReadData2),.data_out(DataMem_ReadData),.func3(Instruction[14:12]));   //datamemory
     adderUnit   Adder2                          (.a(pcOutput),.b(shifterOutput),.cout(dontCareAdder2),.sum(adder2));  //adder of imm
     adderUnit   Adder1                          (.a(pcOutput),.b(4'b0100),.cout(dontCareAdder1),.sum(adder1));        //inc of pc
     //MUXES
     mux_2to1    #(31)MUX_RF                     (.a(ImmGeneratorOutput),.b(ReadData2),.s(ALUsrc),.out(RF_MUX_out));   //RF MUX (bet reg file and alu)
     mux_4to1    #(31)MUX_DataMem                (.a(DataMem_ReadData),.b(ALUResult),.c(adder1),.d(0),.s((JUMP) ? 2'b10 :(Mem2Reg)),.out(DM_MUX_out));   //data memory mux
-    mux_4to1    #(31)MUX_Adder                  (.a(adder2),.b(adder1),.c(ALUResult),.d(0),.s((JUMP) ? 2'b10 :(ALUzeroFlag & Branch)),.out(Adder_MUX));   //adder mux
-   // mux_4to1    #(31)MUX_Adder                  (.a(adder2),.b(adder1),.c(ALUResult),.d(0),.s(1),.out(Adder_MUX));   //adder mux
-    //mux_4to1    #(31)MUX_Adder                  (.a(adder2),.b(adder1),.c(ALUResult),.d(0),.s(1),.out(Adder_MUX));   //adder mux
+    mux_4to1    #(31)MUX_Adder                  (.a(adder2),.b(adder1),.c(ALUResult),.d(0),.s( ((JUMP& Branch) | (branchGateOut)) ? 2'b01 :((JUMP) ?  2'b10:  2'b00) ),.out(Adder_MUX));   //adder mux
     //shifter
     shifter_nBit    shiftLeft1                  (.a(ImmGeneratorOutput), .out(shifterOutput));
     
     //driver
     driver Driver1                              (.clk(clk), .num(numDisplayed),.Anode(Anode),.LED_out(LED_out));
 
+    //branch module
+    branchGate  b1                              (.zf(ALUzeroFlag), .nef(ALUnef), .gtef(ALUgtef), .ltf(ALUltf), .ltuf(ALUltuf), .geuf(ALUgeuf), .branch(Branch), .Branching(branchGateOut), .func3(Instruction[14:12]));
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
    
                                                                             //Board//
@@ -133,7 +131,7 @@ module processor
     
     end
 
-//((JUMP& Branch) | (ALUzeroFlag & Branch)) ? 2'b01 :((JUMP) ?  2'b10:  2'b00)
+//((JUMP& Branch) | (ALUzeroFlag & Branch)) ? 2'b01 :((JUMP) ?  2'b10:  2'b00))
 
 
 //    always @(*) begin
