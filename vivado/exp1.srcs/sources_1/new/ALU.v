@@ -10,7 +10,7 @@ module ALU
     input wire [4:0]  shamt,
     input wire [3:0]selection,
     output reg [N-1:0]out,
-    output wire ZF, CF, VF, SF
+    output wire ZF, CF, VF, SF, NEF, GTEF, LTF, LTUF, GEUF
 );
     //internal signals
     wire cout;
@@ -18,7 +18,9 @@ module ALU
     wire [N-1:0]sub;
     wire cfa, cfs;
     wire [N-1:0] sh;
-   
+    //abs calc
+    reg [N-1:0]abs1;
+    reg [N-1:0]abs2;
     //inst 
     shifter sh1 (.a(a), .shamt(shamt), .type(selection[1:0]), .r(sh));
     
@@ -26,10 +28,14 @@ module ALU
     assign {CF, add} = selection[0] ? (a + op_b + 1'b1) : (a + b);
     assign op_b = (~b);
     //flags
-    assign ZF = (add == 0); //zero
-    assign SF = add[31];    //sign
-    assign VF = (a[31] ^ (op_b[31]) ^ add[31] ^ CF);    //overflow  
-    
+    assign ZF   = (add == 0); //zero
+    assign SF   = add[31];    //sign
+    assign VF   = (a[31] ^ (op_b[31]) ^ add[31] ^ CF);    //overflow  
+    assign NEF  = (~ZF); //bne
+    assign GTEF = (add[31] == 1'b0); //bge
+    assign LTF  = (add[31] == 1'b1); //blt
+    assign LTUF = (abs1 < abs2);
+    assign GEUF = (abs1 >= abs2);
     //Control Unit
     always@(*) begin
         out = 0;
@@ -62,7 +68,20 @@ module ALU
             
             ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         endcase
-
     end
+    
+        //abs
+        always @(*) begin 
+            if (a[31] == 1'b1) begin
+                abs1 = -a;
+            end else begin
+                abs1 = a;
+            end
+            if (b[31] == 1'b1) begin
+                abs2 = -b;
+            end else begin
+                abs2 = b;
+            end
+        end
 
 endmodule
