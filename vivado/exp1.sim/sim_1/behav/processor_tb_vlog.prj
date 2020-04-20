@@ -1,0 +1,23 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  "../../../exp1.srcs/sources_1/new/fullAdder.v"
+verilog xil_defaultlib  "../../../exp1.srcs/sources_1/new/mux_2to1.v"
+verilog xil_defaultlib  "../../../exp1.srcs/sources_1/new/ff.v"
+verilog xil_defaultlib  "../../../exp1.srcs/sources_1/new/adderUnit.v"
+verilog xil_defaultlib  "../../../exp1.srcs/sources_1/new/reg_Nbit.v"
+verilog xil_defaultlib  "../../../exp1.srcs/sources_1/new/driver.v"
+verilog xil_defaultlib  "../../../exp1.srcs/sources_1/new/shifter_nBit.v"
+verilog xil_defaultlib  "../../../exp1.srcs/sources_1/new/DataMem.v"
+verilog xil_defaultlib  "../../../exp1.srcs/sources_1/new/ALU.v"
+verilog xil_defaultlib  "../../../exp1.srcs/sources_1/new/ALUcontrolUnit.v"
+verilog xil_defaultlib  "../../../exp1.srcs/sources_1/new/ImmGen.v"
+verilog xil_defaultlib  "../../../exp1.srcs/sources_1/new/controlUnit.v"
+verilog xil_defaultlib  "../../../exp1.srcs/sources_1/new/regFile.v"
+verilog xil_defaultlib  "../../../exp1.srcs/sources_1/new/InstMem.v"
+verilog xil_defaultlib  "../../../exp1.srcs/sources_1/new/processor.v"
+verilog xil_defaultlib  "../../../exp1.srcs/sources_1/new/processor_tb.v"
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort
