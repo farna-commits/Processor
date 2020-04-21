@@ -16,8 +16,8 @@ module DataMem
 reg [N-1:0] mem [0:63];
 
 initial begin
-    mem[0]=32'sb11111111111111111111111111100111;
-    mem[1]=32'sb11111111111111111111111111100011; 
+    mem[0]=32'd17;
+    mem[1]=32'd9; 
     //mem[1]=32'd4294934399;   // 32639 --> 15 (1's) in binary; 127 --> 7 (1's) in binary (using 0 sign extension)
     mem[2]=32'sb11111111111111111111111111100111;    //-25  
     mem[3]=32'd262144; 
@@ -31,9 +31,9 @@ always@ (*) begin
     if (MemRead) begin
         case(func3)
             3'b010: data_out = mem[addr]; //LW
-            3'b001: data_out = { {16{mem[addr][31]}},mem[addr][15:0] }; //LH
+            3'b001: data_out = { {16{mem[addr][15]}},mem[addr][15:0] }; //LH
             3'b101: data_out = { 16'h0000,mem[addr][15:0] }; //LHU
-            3'b000: data_out = { {24{mem[addr][31]}},mem[addr][7:0] }; //LB
+            3'b000: data_out = { {24{mem[addr][7]}},mem[addr][7:0] }; //LB
             3'b100: data_out = { 24'h000000,mem[addr][7:0] }; //LBU
         endcase
         

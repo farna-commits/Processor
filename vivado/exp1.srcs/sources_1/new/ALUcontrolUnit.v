@@ -11,14 +11,6 @@ module ALUcontrolUnit
 );
 
 always@(*)begin
-    //I format
-//    if(ALUop==2'b00)begin
-//        ALUsel = 4'b0000;
-//    end
-    //branch
-//    if(ALUop==2'b01)begin
-//        ALUsel = 4'b0001;
-//    end
     
     //the rest 
     casex({ALUop,in1,in2, opcode})
@@ -71,9 +63,9 @@ always@(*)begin
         13'b01_100_x_1100011: ALUsel = 4'b00_01;  //BLT 
         13'b01_101_x_1100011: ALUsel = 4'b00_01;  //BGE   
         13'b01_110_x_1100011: ALUsel = 4'b00_01;  //BLTU  
-        13'b01_111_x_1100011: ALUsel = 4'b00_01;  //BGEU      
-   
+        13'b01_111_x_1100011: ALUsel = 4'b00_01;  //BGEU         
    /////////////////////////////////////////////////////////SB format///////////////////////////////////////////////
+        13'bxx_xxx_x_0110111: ALUsel = 4'b00_11;   //lui
     endcase
         
 

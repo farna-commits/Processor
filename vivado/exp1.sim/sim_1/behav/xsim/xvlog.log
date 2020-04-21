@@ -1,38 +1,38 @@
-INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Vivado/Codes/Backups/Apr 20/4/Processor/vivado/exp1.srcs/sources_1/new/ALU.v" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Vivado/Codes/Backups/Apr 20/5/Processor/vivado/exp1.srcs/sources_1/new/ALU.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module ALU
-INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Vivado/Codes/Backups/Apr 20/4/Processor/vivado/exp1.srcs/sources_1/new/ALUcontrolUnit.v" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Vivado/Codes/Backups/Apr 20/5/Processor/vivado/exp1.srcs/sources_1/new/ALUcontrolUnit.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module ALUcontrolUnit
-INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Vivado/Codes/Backups/Apr 20/4/Processor/vivado/exp1.srcs/sources_1/new/DataMem.v" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Vivado/Codes/Backups/Apr 20/5/Processor/vivado/exp1.srcs/sources_1/new/DataMem.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module DataMem
-INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Vivado/Codes/Backups/Apr 20/4/Processor/vivado/exp1.srcs/sources_1/new/ImmGen.v" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Vivado/Codes/Backups/Apr 20/5/Processor/vivado/exp1.srcs/sources_1/new/ImmGen.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module ImmGen
-INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Vivado/Codes/Backups/Apr 20/4/Processor/vivado/exp1.srcs/sources_1/new/InstMem.v" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Vivado/Codes/Backups/Apr 20/5/Processor/vivado/exp1.srcs/sources_1/new/InstMem.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module InstMem
-INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Vivado/Codes/Backups/Apr 20/4/Processor/vivado/exp1.srcs/sources_1/new/adderUnit.v" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Vivado/Codes/Backups/Apr 20/5/Processor/vivado/exp1.srcs/sources_1/new/adderUnit.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module adderUnit
-INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Vivado/Codes/Backups/Apr 20/4/Processor/vivado/exp1.srcs/sources_1/new/branchGate.v" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Vivado/Codes/Backups/Apr 20/5/Processor/vivado/exp1.srcs/sources_1/new/branchGate.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module branchGate
-INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Vivado/Codes/Backups/Apr 20/4/Processor/vivado/exp1.srcs/sources_1/new/controlUnit.v" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Vivado/Codes/Backups/Apr 20/5/Processor/vivado/exp1.srcs/sources_1/new/controlUnit.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module controlUnit
-INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Vivado/Codes/Backups/Apr 20/4/Processor/vivado/exp1.srcs/sources_1/new/driver.v" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Vivado/Codes/Backups/Apr 20/5/Processor/vivado/exp1.srcs/sources_1/new/driver.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module driver
-INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Vivado/Codes/Backups/Apr 20/4/Processor/vivado/exp1.srcs/sources_1/new/ff.v" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Vivado/Codes/Backups/Apr 20/5/Processor/vivado/exp1.srcs/sources_1/new/ff.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module ff
-INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Vivado/Codes/Backups/Apr 20/4/Processor/vivado/exp1.srcs/sources_1/new/fullAdder.v" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Vivado/Codes/Backups/Apr 20/5/Processor/vivado/exp1.srcs/sources_1/new/fullAdder.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module fullAdder
-INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Vivado/Codes/Backups/Apr 20/4/Processor/vivado/exp1.srcs/sources_1/new/mux_2to1.v" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Vivado/Codes/Backups/Apr 20/5/Processor/vivado/exp1.srcs/sources_1/new/mux_2to1.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module mux_2to1
-INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Vivado/Codes/Backups/Apr 20/4/Processor/vivado/exp1.srcs/sources_1/new/mux_4to1.v" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Vivado/Codes/Backups/Apr 20/5/Processor/vivado/exp1.srcs/sources_1/new/mux_4to1.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module mux_4to1
-INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Vivado/Codes/Backups/Apr 20/4/Processor/vivado/exp1.srcs/sources_1/new/processor.v" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Vivado/Codes/Backups/Apr 20/5/Processor/vivado/exp1.srcs/sources_1/new/processor.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module processor
-INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Vivado/Codes/Backups/Apr 20/4/Processor/vivado/exp1.srcs/sources_1/new/regFile.v" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Vivado/Codes/Backups/Apr 20/5/Processor/vivado/exp1.srcs/sources_1/new/regFile.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module regFile
-INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Vivado/Codes/Backups/Apr 20/4/Processor/vivado/exp1.srcs/sources_1/new/reg_Nbit.v" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Vivado/Codes/Backups/Apr 20/5/Processor/vivado/exp1.srcs/sources_1/new/reg_Nbit.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module reg_Nbit
-INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Vivado/Codes/Backups/Apr 20/4/Processor/vivado/exp1.srcs/sources_1/new/shifter.v" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Vivado/Codes/Backups/Apr 20/5/Processor/vivado/exp1.srcs/sources_1/new/shifter.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module shifter
-INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Vivado/Codes/Backups/Apr 20/4/Processor/vivado/exp1.srcs/sources_1/new/shifter_nBit.v" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Vivado/Codes/Backups/Apr 20/5/Processor/vivado/exp1.srcs/sources_1/new/shifter_nBit.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module shifter_nBit
-INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Vivado/Codes/Backups/Apr 20/4/Processor/vivado/exp1.srcs/sources_1/new/processor_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Vivado/Codes/Backups/Apr 20/5/Processor/vivado/exp1.srcs/sources_1/new/processor_tb.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module processor_tb
