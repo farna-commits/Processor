@@ -20,15 +20,13 @@ module shifter
     output reg [N-1:0] r 
 );
 
-    wire signed [N-1:0]asigned;
-    assign asigned = a;
 
     always @(*) begin         
         case (type)            
-		    2'b01:        r = a >>  shamt; //SLR
+		    2'b01:        r = a >>  shamt; //Srl
             2'b00:        r = a <<  shamt; //SLL
-            2'b10:        r = asigned >>> shamt; //SRA
-            default:      r = a;        
+            2'b10:        r = $signed(a) >>> shamt; //SRA
+            default:      r = 0;        
         endcase            
     end
 

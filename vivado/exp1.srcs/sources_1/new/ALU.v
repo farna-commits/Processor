@@ -58,7 +58,7 @@ module ALU
              // shift 
             4'b00_10:  out  =   a <<  b;        //sll
             4'b01_10:  out  =   a >>  b;        //SRL
-            4'b10_11:  out  =   a >>> b;        //sra
+            4'b10_11:  out  =   $signed(a) >>> b;        //sra
             // slt & sltu
             4'b11_01:  out  = {31'b0,(SF != VF)};   //SLT
             4'b11_11:  out  = {31'b0,(~CF)};        //SLTU 
