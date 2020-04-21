@@ -1,34 +1,22 @@
-`timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-
+`include "defines.v"
 module ImmGen
+#(parameter N =32)
 (
-    output reg [31:0] gen_out, 
-    input [31:0] inst
+    output reg [N-1:0] Imm, 
+    input wire [N-1:0] IR
 );
     
-    
-    always@(*) begin
-        
-        //BEQ
-        if(inst[6]) begin
-            gen_out[11:0]= {inst[31],inst[7],inst[30:25],inst[11:8]};
-        end
-        //SW
-        if(~inst[6] && inst[5]) begin
-            gen_out[11:0]= {inst[31:25],inst[11:7]};
-        end
-        
-        //LW    
-        if(~inst[6] && ~inst[5]) begin
-            gen_out[11:0]= {inst[31:20]};
-        end                
-              
-        //sign extension
-        if(gen_out[11]) begin
-            gen_out[31:12] = 20'b11111111111111111111;
-        end else begin
-            gen_out[31:12] = 5'h00000;
-        end
-    end
+always @(*) begin
+	case (`OPCODE)
+		`OPCODE_Arith_I   : 	Imm = { {21{IR[31]}}, IR[30:25], IR[24:21], IR[20] };
+		`OPCODE_Store     :     Imm = { {21{IR[31]}}, IR[30:25], IR[11:8], IR[7] };
+		`OPCODE_LUI       :     Imm = { IR[31], IR[30:20], IR[19:12], 12'b0 };
+		`OPCODE_AUIPC     :     Imm = { 1'b0,IR[31], IR[30:20], IR[19:12], 11'b0 };    //shift 12 left 
+		`OPCODE_JAL       : 	Imm = { {12{IR[31]}}, IR[19:12], IR[20], IR[30:25], IR[24:21], 1'b0 };
+		`OPCODE_JALR      : 	Imm = { {21{IR[31]}}, IR[30:25], IR[24:21], IR[20] };
+		`OPCODE_Branch    : 	Imm = { {20{IR[31]}}, IR[7], IR[30:25], IR[11:8], 1'b0};
+		`OPCODE_Load	  :     Imm = { {21{IR[31]}}, IR[30:25], IR[24:21], IR[20] }; 
+		default           : 	Imm = { {21{IR[31]}}, IR[30:25], IR[24:21], IR[20] }; // IMM_I
+	endcase 
+end
 endmodule

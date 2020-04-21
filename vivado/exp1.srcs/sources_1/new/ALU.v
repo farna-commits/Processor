@@ -1,42 +1,81 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
 
-
+`include "defines.v"
 module ALU
 #(parameter N =32)
 (
-    input [N-1:0]a,
-    input [N-1:0]b,
-    input [3:0]selection,
+    input wire [N-1:0]a,
+    input wire [N-1:0]b,
+    input wire [4:0]  shamt,
+    input wire [3:0]selection,
     output reg [N-1:0]out,
-    output reg ZF
+    output wire ZF, CF, VF, SF, NEF, GTEF, LTF, LTUF, GEUF
 );
+
     //internal signals
     wire cout;
-    wire [N-1:0]add;
+    wire [N-1:0]add, op_b;
     wire [N-1:0]sub;
+    wire cfa, cfs;
+    wire [N-1:0] sh;
+    //abs calc
+    reg [N-1:0]abs1;
+    reg [N-1:0]abs2;
+    //inst 
+    shifter sh1 (.a(a), .shamt(shamt), .type(selection[1:0]), .r(sh));
     
-    
-    //inst
-    adderUnit a1(.a(a), .b(b), .sum(add), .cout(cout));
-    adderUnit a2(.a(a), .b(~b+1), .sum(sub), .cout(cout));
-   
-    
+    //plus/minus
+    assign {CF, add} = selection[0] ? (a + op_b + 1'b1) : (a + b);
+    assign op_b = (~b);
+    //flags
+    assign ZF   = (add == 0); //zero
+    assign SF   = add[N-1];    //sign
+    assign VF   = (a[N-1] ^ (op_b[N-1]) ^ add[N-1] ^ CF);    //overflow  
+    assign NEF  = (~ZF); //bne
+    assign GTEF = (add[N-1] == 1'b0); //bge
+    assign LTF  = (add[N-1] == 1'b1); //blt
+    assign LTUF = (abs1 < abs2);
+    assign GEUF = (abs1 >= abs2);
     //Control Unit
     always@(*) begin
+        out = 0;
+        (* parallel_case *)
         case(selection)
-            4'b0010: out <= add;    //add
-            4'b0110: out <= sub;    //sub
-            4'b0000: out <= a&b;    //AND
-            4'b0001: out <= a|b;    //OR
-            default: out <= 0;
+               
+            `ALU_ADD    : out   = add;                      //add
+            `ALU_SUB    : out   = add;                      //sub
+            `ALU_LUI   : out   = b;                        //lui
+            // logic            
+            `ALU_OR     :  out  = a | b;                    //OR
+            `ALU_AND    :  out  = a & b;                    //AND
+            `ALU_XOR    :  out  = a ^ b;                    //XOR
+            // shift        
+            `ALU_SLLI  :  out  =   sh;                     //slli
+            `ALU_SRLI   :  out  =   sh;                     //SRLi
+            `ALU_SRAI   :  out  =   sh;                     //srai
+             // shift       
+            `ALU_SLL    :  out  =   a <<  b;                //sll
+            `ALU_SRL    :  out  =   a >>  b;                //SRL
+            `ALU_SRA    :  out  =   $signed(a) >>> b;       //sra
+            // slt & sltu
+            `ALU_SLT    :  out  = {31'b0,(SF != VF)};       //SLT
+            `ALU_SLTU   :  out  = {31'b0,(~CF)};            //SLTU 
         endcase
-        if (out==0) begin
-            ZF <= 1;
-        end else begin
-            ZF <= 0;
-        end
-    
     end
+    
+        //Getting Absolute Value of inputs
+        always @(*) begin 
+            if (a[N-1] == 1'b1) begin
+                abs1 = -a;
+            end else begin
+                abs1 = a;
+            end
+            if (b[N-1] == 1'b1) begin
+                abs2 = -b;
+            end else begin
+                abs2 = b;
+            end
+        end
 
 endmodule

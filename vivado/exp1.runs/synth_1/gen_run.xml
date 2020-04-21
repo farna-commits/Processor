@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GenRun Id="synth_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1583843401">
-  <File Type="RDS-PROPCONSTRS" Name="processor_drc_synth.rpt"/>
   <File Type="PA-TCL" Name="processor.tcl"/>
   <File Type="RDS-RDS" Name="processor.vds"/>
+  <File Type="RDS-DCP" Name="processor.dcp"/>
   <File Type="RDS-UTIL" Name="processor_utilization_synth.rpt"/>
   <File Type="RDS-UTIL-PB" Name="processor_utilization_synth.pb"/>
-  <File Type="RDS-DCP" Name="processor.dcp"/>
-  <File Type="VDS-TIMINGSUMMARY" Name="processor_timing_summary_synth.rpt"/>
-  <File Type="VDS-TIMING-PB" Name="processor_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PSRCDIR/sources_1/new/fullAdder.v">
