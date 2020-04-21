@@ -3,7 +3,7 @@
 
 module shifter_nBit
 
-#(parameter N=32 )
+#(parameter N=32)
 (
     input [N-1:0]a,
     output [N-1:0]out

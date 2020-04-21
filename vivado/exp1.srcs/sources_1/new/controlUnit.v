@@ -21,18 +21,18 @@ module controlUnit
     
     always@(*)begin
         casex ({inst[6:2], ebit})
-            6'b01100_x: {branch,memread,mem2reg,ALUop[1:0],memwrite,ALUsrc,regwrite,JUMP,E,auipcBit} = 11'b00010001010;   //r
-            6'b00000_x: {branch,memread,mem2reg,ALUop[1:0],memwrite,ALUsrc,regwrite,JUMP,E,auipcBit} = 11'b01100011010;   //lw
-            6'b01000_x: {branch,memread,mem2reg,ALUop[1:0],memwrite,ALUsrc,regwrite,JUMP,E,auipcBit} = 11'b00000110010;   //sw
-            6'b11000_x: {branch,memread,mem2reg,ALUop[1:0],memwrite,ALUsrc,regwrite,JUMP,E,auipcBit} = 11'b10001000010;   //beq  
-            6'b00100_x: {branch,memread,mem2reg,ALUop[1:0],memwrite,ALUsrc,regwrite,JUMP,E,auipcBit} = 11'b00000011010;   //I format (arith)  
-            6'b11001_x: {branch,memread,mem2reg,ALUop[1:0],memwrite,ALUsrc,regwrite,JUMP,E,auipcBit} = 11'b00000011110;   //I format (JALR)  
-            6'b11011_x: {branch,memread,mem2reg,ALUop[1:0],memwrite,ALUsrc,regwrite,JUMP,E,auipcBit} = 11'b10001011110;   //UJ format (JAL)
-            6'b11100_1: {branch,memread,mem2reg,ALUop[1:0],memwrite,ALUsrc,regwrite,JUMP,E,auipcBit} = 11'b00000000000;   //EBREAK,  
-            6'b11100_0: {branch,memread,mem2reg,ALUop[1:0],memwrite,ALUsrc,regwrite,JUMP,E,auipcBit} = 11'b00000000010;   // ECALL, CSR: (csrrw, csrrs, csrrc, csrrwi, csrrci)
-            6'b00011_x: {branch,memread,mem2reg,ALUop[1:0],memwrite,ALUsrc,regwrite,JUMP,E,auipcBit} = 11'b00000000010;   //Fence, fence.i      
-            6'b00101_x: {branch,memread,mem2reg,ALUop[1:0],memwrite,ALUsrc,regwrite,JUMP,E,auipcBit} = 11'b00001001011;   //auipc  
-            6'b01101_x: {branch,memread,mem2reg,ALUop[1:0],memwrite,ALUsrc,regwrite,JUMP,E,auipcBit} = 11'b00001011010;   //lui     
+            `CU_R           : {branch,memread,mem2reg,ALUop[1:0],memwrite,ALUsrc,regwrite,JUMP,E,auipcBit} = 11'b00010001010;   //r
+            `CU_LW          : {branch,memread,mem2reg,ALUop[1:0],memwrite,ALUsrc,regwrite,JUMP,E,auipcBit} = 11'b01100011010;   //lw
+            `CU_S           : {branch,memread,mem2reg,ALUop[1:0],memwrite,ALUsrc,regwrite,JUMP,E,auipcBit} = 11'b00000110010;   //S
+            `CU_SB          : {branch,memread,mem2reg,ALUop[1:0],memwrite,ALUsrc,regwrite,JUMP,E,auipcBit} = 11'b10001000010;   //SB  
+            `CU_IARITH      : {branch,memread,mem2reg,ALUop[1:0],memwrite,ALUsrc,regwrite,JUMP,E,auipcBit} = 11'b00000011010;   //I format (arith)  
+            `CU_IJALR       : {branch,memread,mem2reg,ALUop[1:0],memwrite,ALUsrc,regwrite,JUMP,E,auipcBit} = 11'b00000011110;   //I format (JALR)  
+            `CU_UJJAL       : {branch,memread,mem2reg,ALUop[1:0],memwrite,ALUsrc,regwrite,JUMP,E,auipcBit} = 11'b10001011110;   //UJ format (JAL)
+            `CU_EBREAK      : {branch,memread,mem2reg,ALUop[1:0],memwrite,ALUsrc,regwrite,JUMP,E,auipcBit} = 11'b00000000000;   //EBREAK,  
+            `CU_ECALLCSR    : {branch,memread,mem2reg,ALUop[1:0],memwrite,ALUsrc,regwrite,JUMP,E,auipcBit} = 11'b00000000010;   // ECALL, CSR: (csrrw, csrrs, csrrc, csrrwi, csrrci)
+            `CU_FENCE       : {branch,memread,mem2reg,ALUop[1:0],memwrite,ALUsrc,regwrite,JUMP,E,auipcBit} = 11'b00000000010;   //Fence, fence.i      
+            `CU_AUIPC       : {branch,memread,mem2reg,ALUop[1:0],memwrite,ALUsrc,regwrite,JUMP,E,auipcBit} = 11'b00001001011;   //auipc  
+            `CU_LUI         : {branch,memread,mem2reg,ALUop[1:0],memwrite,ALUsrc,regwrite,JUMP,E,auipcBit} = 11'b00001011010;   //lui     
         endcase
         
     end

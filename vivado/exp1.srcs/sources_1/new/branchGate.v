@@ -25,17 +25,17 @@ module branchGate
     always@(*) begin
         Branching = 0;
         if (branch) begin    
-            if (zf && (func3 == 3'b000)) begin 
+            if (zf && (func3 == `BR_BEQ)) begin 
                 Branching = 1;
-            end else if (nef && (func3 == 3'b001))begin
+            end else if (nef && (func3 == `BR_BNE))begin
                 Branching = 1;
-            end else if (gtef && (func3 == 3'b101))begin
+            end else if (gtef && (func3 == `BR_BGE))begin
                 Branching = 1;
-            end else if (ltf && (func3 == 3'b100))begin
+            end else if (ltf && (func3 == `BR_BLT))begin
                 Branching = 1;
-            end else if (ltuf && (func3 == 3'b110))begin
+            end else if (ltuf && (func3 == `BR_BLTU))begin
                 Branching = 1;
-            end else if (geuf && (func3 == 3'b111))begin
+            end else if (geuf && (func3 == `BR_BGEU))begin
                 Branching = 1;
             end else begin
                 Branching = 0;
