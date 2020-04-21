@@ -1,6 +1,4 @@
-`timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-
+`include "defines.v"
 module ALUcontrolUnit
 (
     input [1:0]ALUop, 
@@ -16,56 +14,54 @@ always@(*)begin
     casex({ALUop,in1,in2, opcode})
 
         /////////////////////////////////////////////////////////R format///////////////////////////////////////////////
-        13'b10_000_0_0110011: ALUsel = 4'b00_00;   //Add
-        13'b10_000_1_0110011: ALUsel = 4'b00_01;   //Sub
-        13'b10_111_0_0110011: ALUsel = 4'b01_01;   //AND
-        13'b10_110_0_0110011: ALUsel = 4'b01_00;   //OR
-        13'b10_100_0_0110011: ALUsel = 4'b01_11;   //XOR                        
-        //shift         
-        13'b10_001_0_0110011: ALUsel = 4'b00_10;   //SLL 
-        13'b10_101_0_0110011: ALUsel = 4'b01_10;   //SRL
-        13'b10_101_1_0110011: ALUsel = 4'b10_11;   //SRA                   
-        //set on   
-        13'b10_010_0_0110011: ALUsel = 4'b11_01;   //SLT
-        13'b10_011_0_0110011: ALUsel = 4'b11_11;   //SLTU
+        `ALUCUADD   : ALUsel = `ALU_ADD;   //Add
+        `ALUCUSUB   : ALUsel = `ALU_SUB;   //Sub
+        `ALUCUAND   : ALUsel = `ALU_AND;   //AND
+        `ALUCUOR    : ALUsel = `ALU_OR;   //OR
+        `ALUCUXOR   : ALUsel = `ALU_XOR;   //XOR                        
+        `ALUCUSLL   : ALUsel = `ALU_SLL;   //SLL 
+        `ALUCUSRL   : ALUsel = `ALU_SRL;   //SRL
+        `ALUCUSRA   : ALUsel = `ALU_SRA;   //SRA                     
+        `ALUCUSLT   : ALUsel = `ALU_SLT;   //SLT
+        `ALUCUSLTU  : ALUsel = `ALU_SLTU;   //SLTU
     /////////////////////////////////////////////////////////R format///////////////////////////////////////////////
         
     /////////////////////////////////////////////////////////I format///////////////////////////////////////////////    
-        13'b00_110_x_0010011: ALUsel = 4'b01_00;   //OR
-        13'b00_111_x_0010011: ALUsel = 4'b01_01;   //AND
-        13'b00_100_x_0010011: ALUsel = 4'b01_11;   //XOR
-        13'b00_010_x_0010011: ALUsel = 4'b11_01;   //SLTI
-        13'b00_011_x_0010011: ALUsel = 4'b11_11;   //SLTU
-        13'b00_000_x_0010011: ALUsel = 4'b00_00;   //JALR
-        13'b00_010_x_0000011: ALUsel = 4'b00_00;   //LW
-        13'b00_001_x_0000011: ALUsel = 4'b00_00;   //LH
-        13'b00_000_x_0000011: ALUsel = 4'b00_00;   //LB
-        13'b00_101_x_0000011: ALUsel = 4'b00_00;   //LHU
-        13'b00_100_x_0000011: ALUsel = 4'b00_00;   //LBU        
-        13'b00_001_0_0010011: ALUsel = 4'b10_00;   //SLLI 
-        13'b00_101_0_0010011: ALUsel = 4'b10_01;   //SRLI 
-        13'b00_101_1_0010011: ALUsel = 4'b10_10;   //SRAI  
+        `ALUCUORI  : ALUsel = `ALU_OR;   //OR
+        `ALUCUANDI : ALUsel = `ALU_AND;   //AND
+        `ALUCUXORI : ALUsel = `ALU_XOR;   //XOR
+        `ALUCUSLTI : ALUsel = `ALU_SLT;   //SLTI
+        `ALUCUSLTUI: ALUsel = `ALU_SLTU;   //SLTU
+        `ALUCUJALR : ALUsel = `ALU_ADD;   //JALR
+        `ALUCULW   : ALUsel = `ALU_ADD;   //LW
+        `ALUCULH   : ALUsel = `ALU_ADD;   //LH
+        `ALUCULB   : ALUsel = `ALU_ADD;   //LB
+        `ALUCULHU  : ALUsel = `ALU_ADD;   //LHU
+        `ALUCULBU  : ALUsel = `ALU_ADD;   //LBU        
+        `ALUCUSLLI : ALUsel = `ALU_SLLI;   //SLLI 
+        `ALUCUSRLI : ALUsel = `ALU_SRLI;   //SRLI 
+        `ALUCUSRAI : ALUsel = `ALU_SRAI;   //SRAI  
     /////////////////////////////////////////////////////////I format///////////////////////////////////////////////
     
     ////////////////////////////////////////////////////////UJ format///////////////////////////////////////////////
-        13'b00_xxx_x_1101111: ALUsel = 4'b00_00;   //JAL
+        `ALUCUJAL: ALUsel = `ALU_ADD;   //JAL
     ////////////////////////////////////////////////////////UJ format///////////////////////////////////////////////
-    
+
     /////////////////////////////////////////////////////////S format///////////////////////////////////////////////
-        13'b00_010_x_0100011: ALUsel = 4'b00_00;   //SW
-        13'b00_001_x_0100011: ALUsel = 4'b00_00;   //SH
-        13'b00_000_x_0100011: ALUsel = 4'b00_00;   //SB
+        `ALUCUSW: ALUsel = `ALU_ADD;   //SW
+        `ALUCUSH: ALUsel = `ALU_ADD;   //SH
+        `ALUCUSB: ALUsel = `ALU_ADD;   //SB
     /////////////////////////////////////////////////////////S format///////////////////////////////////////////////
-        
+
    /////////////////////////////////////////////////////////SB format///////////////////////////////////////////////
-        13'b01_000_x_1100011: ALUsel = 4'b00_01;  //BEQ
-        13'b01_001_x_1100011: ALUsel = 4'b00_01;  //BNE     
-        13'b01_100_x_1100011: ALUsel = 4'b00_01;  //BLT 
-        13'b01_101_x_1100011: ALUsel = 4'b00_01;  //BGE   
-        13'b01_110_x_1100011: ALUsel = 4'b00_01;  //BLTU  
-        13'b01_111_x_1100011: ALUsel = 4'b00_01;  //BGEU         
+        `ALUCUBEQ : ALUsel = `ALU_SUB;  //BEQ
+        `ALUCUBNE : ALUsel = `ALU_SUB;  //BNE     
+        `ALUCUBLT : ALUsel = `ALU_SUB;  //BLT 
+        `ALUCUBGE : ALUsel = `ALU_SUB;  //BGE   
+        `ALUCUBLTU: ALUsel = `ALU_SUB;  //BLTU  
+        `ALUCUBGEU: ALUsel = `ALU_SUB;  //BGEU         
    /////////////////////////////////////////////////////////SB format///////////////////////////////////////////////
-        13'bxx_xxx_x_0110111: ALUsel = 4'b00_11;   //lui
+        `ALUCULUI : ALUsel = `ALU_LUI;   //lui
     endcase
         
 

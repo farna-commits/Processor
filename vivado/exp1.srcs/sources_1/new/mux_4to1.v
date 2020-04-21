@@ -1,14 +1,21 @@
-`timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
+/*******************************************************************
+*
+* Module: branchGate.v
+* Project: Processor
+* Author: Hana Asal, hana_asal@aucegypt.edu
+* Description: 4 to 1 MUX
+*
+* Created: 19/4/2020
+**********************************************************************/
 module mux_4to1 
 #(parameter N=0)
 (
-    input [ N:0] a,
-    input [N:0]b,
-    input[N:0] c, 
-    input[N:0] d,
-    input [N:0]s, 
-    output reg [N:0]out 
+    input [N-1:0] a,
+    input [N-1:0]b,
+    input[N-1:0] c, 
+    input[N-1:0] d,
+    input [N-1:0]s, 
+    output reg [N-1:0]out 
  );
  always @(*)
     begin
