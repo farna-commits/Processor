@@ -16,8 +16,8 @@ module DataMem
 reg [N-1:0] mem [0:63];
 
 initial begin
-    mem[0]=-5;
-    mem[1]=32'd1; 
+    mem[0]=-2;
+    mem[1]=-5; 
     //mem[1]=32'd4294934399;   // 32639 --> 15 (1's) in binary; 127 --> 7 (1's) in binary (using 0 sign extension)
     mem[2]=-25;    //-25  
     mem[3]=32'd262144; 
