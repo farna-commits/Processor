@@ -95,28 +95,27 @@ module processor
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
                                                                             //Instantiations//
 
-    reg_Nbit            PC                                      (.clk(clk), .en(en & MEMWB_out[72]), .rst(rst),.D(Adder_MUX), .Q(pcOutput));   //PC
+    reg_Nbit            PC                                      (.clk(push), .en(en & MEMWB_out[72]), .rst(rst),.D(Adder_MUX), .Q(pcOutput));   //PC
     //InstMem             InstructionMemory                       (.addr(pcOutput[`IR_raddr]), .data_out(Instruction));    //inst memory
     memory              Memory                                  (.clk(push), .MemRead(EXMEM_out[103]), .MemWrite(EXMEM_out[102]), .addr(Address_MUX_out), .data_in(EXMEM_out[36:5]), .func3(EXMEM_out[120:118]), .data_out(MemOut));
-    regFile             RegisterFile                            (.r1(IFID_out[19:15]), .r2(IFID_out[24:20]),.wr(MEMWB_out[4:0]),.wd(IM_MUX_out),.wen(MEMWB_out[70]),.clk(push),.rst(rst),.rdata1(ReadData1),.rdata2(ReadData2)); //reg file
+    regFile             RegisterFile                            (.r1(IFID_out[19:15]), .r2(IFID_out[24:20]),.wr(MEMWB_out[4:0]),.wd(IM_MUX_out),.wen(MEMWB_out[70]),.clk(~push),.rst(rst),.rdata1(ReadData1),.rdata2(ReadData2)); //reg file
     controlUnit         Control_Unit                            (.inst(IFID_out[6:0]),.branch(Branch),.memread(MemRead),.mem2reg(Mem2Reg),.ALUop(ALUop),.memwrite(MemWrite),.ALUsrc(ALUsrc),.regwrite(RegWrite),.JUMP(JUMP), .E(E), .ebit(IFID_out[20]), .auipcBit(auipcBit)); //control unit
     ImmGen              immediateGenerator                      (.Imm(ImmGeneratorOutput),.IR(IFID_out[31:0]));    //Imm gen
     ALUcontrolUnit      ALU_Control_Unit                        (.ALUop(IDEX_out[139:138]),.in1(IDEX_out[8:6]),.in2(IDEX_out[5]),.ALUsel(ALUcontrolSelect), .opcode(IDEX_out[154:148]));   //aluControl   
     ALU                 ALU1                                    (.a(IDEX_out[104:73]),.b(RF_MUX_out),.selection(ALUcontrolSelect),.out(ALUResult),.ZF(ALUzeroFlag), .shamt(IFID_out[24:20]), .CF(ALUcf), .VF(ALUvf), .SF(ALUsf), .NEF(ALUnef), .GTEF(ALUgtef), .LTF(ALUltf), .LTUF(ALUltuf), .GEUF(ALUgeuf));
-    //DataMem             DataMemory                              (.clk(push),.MemRead(MemRead),.MemWrite(MemWrite),.addr(ALUResult[`IR_raddr]),.data_in(ReadData2),.data_out(DataMem_ReadData),.func3(Instruction[`IR_funct3]));   //datamemory
     adderUnit           Adder2                                  (.a(IDEX_out[136:105]),.b(shifterOutput),.cout(dontCareAdder2),.sum(adder2));  //adder of imm
     adderUnit           Adder1                                  (.a(pcOutput),.b(4'b0100),.cout(dontCareAdder1),.sum(adder1));        //inc of pc
     //Pipeline Registers
     reg_Nbit    #(96)   IF_ID                                   (.clk(~push), .en(en), .rst(rst),.D(IFID_in), .Q(IFID_out));   //inst mem(32), PC (32)
-    reg_Nbit    #(192)  ID_EX                                   (.clk(~push), .en(en), .rst(rst),.D(IDEX_in), .Q(IDEX_out));   //inst[11:7] (5), inst[30,14:12] (4), immGen(32), readd2(32), readd1(32), IF_ID(32),controlU(EX, M,WB)(8)    
+    reg_Nbit    #(192)  ID_EX                                   (.clk(push), .en(en), .rst(rst),.D(IDEX_in), .Q(IDEX_out));   //inst[11:7] (5), inst[30,14:12] (4), immGen(32), readd2(32), readd1(32), IF_ID(32),controlU(EX, M,WB)(8)    
     reg_Nbit    #(153)  EX_MEM                                  (.clk(~push), .en(en), .rst(rst),.D(EXMEM_in), .Q(EXMEM_out));   //IDEX (inst[11:7](5)), IDEX(readd2(32)), ALURes(32), ZF(1), addsum(32), M(3), WB(2)
-    reg_Nbit    #(138)  MEM_WB                                  (.clk(~push), .en(en), .rst(rst),.D(MEMWB_in), .Q(MEMWB_out));   //EXMEM(inst[11:7](5)), EXMEM(alures(32)), readd(32), WB(2)
+    reg_Nbit    #(138)  MEM_WB                                  (.clk(push), .en(en), .rst(rst),.D(MEMWB_in), .Q(MEMWB_out));   //EXMEM(inst[11:7](5)), EXMEM(alures(32)), readd(32), WB(2)
     //MUXES
     mux_2to1    #(32)   MUX_RF                                  (.a(IDEX_out[40:9]),.b(IDEX_out[72:41]),.s(IDEX_out[137]),.out(RF_MUX_out));   //RF MUX (bet reg file and alu)
     mux_4to1    #(32)   MUX_IM                                  (.a(DM_MUX_out),.b(MEMWB_out[137:106]),.c(MEMWB_out[105:74]),.d(0),.s( (MEMWB_out[71]) ? 2'b10 :((MEMWB_out[73]) ? 2'b00 : 2'b01) ),.out(IM_MUX_out));  //between inst mem and rf    
     mux_2to1    #(32)   MUX_DataMem                             (.a(MEMWB_out[68:37]),.b(MEMWB_out[36:5]),.s(MEMWB_out[69]),.out(DM_MUX_out));   //data memory mux
     mux_4to1    #(32)   MUX_Adder                               (.a(EXMEM_out[101:70]),.b(adder1),.c(EXMEM_out[44:39]),.d(0),.s( ((EXMEM_out[107] & EXMEM_out[104]) | (branchGateOut)) ? 2'b01 :((EXMEM_out[107]) ?  2'b10:  2'b00) ),.out(Adder_MUX));   //adder mux
-    mux_2to1    #(10)   MUX_Address                             (.a(EXMEM_out[48:39]),.b(pcOutput[11:2]),.s(~push),.out(Address_MUX_out));   //RF MUX (bet reg file and alu)
+    mux_2to1    #(10)   MUX_Address                             (.a(EXMEM_out[46:37]),.b((pcOutput[11:2]) << 2),.s(~push),.out(Address_MUX_out));   
     //shifter
     shifter_nBit        shiftLeft1                              (.a(IDEX_out[40:9]), .out(shifterOutput));
     //branch module
