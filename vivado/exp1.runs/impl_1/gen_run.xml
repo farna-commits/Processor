@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GenRun Id="impl_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1583843401">
   <File Type="BG-DRC" Name="processor.drc"/>
-  <File Type="PWROPT-DCP" Name="processor_pwropt.dcp"/>
   <File Type="ROUTE-PWR" Name="processor_power_routed.rpt"/>
   <File Type="PA-TCL" Name="processor.tcl"/>
-  <File Type="OPT-DCP" Name="processor_opt.dcp"/>
+  <File Type="PWROPT-DCP" Name="processor_pwropt.dcp"/>
   <File Type="OPT-HWDEF" Name="processor.hwdef"/>
-  <File Type="PLACE-PRE-SIMILARITY" Name="processor_incremental_reuse_pre_placed.rpt"/>
+  <File Type="OPT-DCP" Name="processor_opt.dcp"/>
   <File Type="ROUTE-CLK" Name="processor_clock_utilization_routed.rpt"/>
   <File Type="RDI-RDI" Name="processor.vdi"/>
+  <File Type="PLACE-PRE-SIMILARITY" Name="processor_incremental_reuse_pre_placed.rpt"/>
   <File Type="PLACE-DCP" Name="processor_placed.dcp"/>
   <File Type="POSTPLACE-PWROPT-DCP" Name="processor_postplace_pwropt.dcp"/>
   <File Type="PHYSOPT-DCP" Name="processor_physopt.dcp"/>
@@ -16,14 +16,14 @@
   <File Type="ROUTE-ERROR-DCP" Name="processor_routed_error.dcp"/>
   <File Type="ROUTE-DCP" Name="processor_routed.dcp"/>
   <File Type="ROUTE-BLACKBOX-DCP" Name="processor_routed_bb.dcp"/>
-  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="processor_methodology_drc_routed.pb"/>
   <File Type="BG-BIN" Name="processor.bin"/>
-  <File Type="ROUTE-DRC-RPX" Name="processor_drc_routed.rpx"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="processor_methodology_drc_routed.pb"/>
   <File Type="BITSTR-MSK" Name="processor.msk"/>
-  <File Type="ROUTE-METHODOLOGY-DRC" Name="processor_methodology_drc_routed.rpt"/>
+  <File Type="ROUTE-DRC-RPX" Name="processor_drc_routed.rpx"/>
   <File Type="BG-BGN" Name="processor.bgn"/>
-  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="processor_methodology_drc_routed.rpx"/>
+  <File Type="ROUTE-METHODOLOGY-DRC" Name="processor_methodology_drc_routed.rpt"/>
   <File Type="BITSTR-RBT" Name="processor.rbt"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="processor_methodology_drc_routed.rpx"/>
   <File Type="ROUTE-TIMING-PB" Name="processor_timing_summary_routed.pb"/>
   <File Type="POSTROUTE-PHYSOPT-DCP" Name="processor_postroute_physopt.dcp"/>
   <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="processor_postroute_physopt_bb.dcp"/>
