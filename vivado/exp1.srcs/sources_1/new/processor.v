@@ -57,6 +57,8 @@ module processor
     wire [N-1:0]IM_MUX_out;
     wire [N-1:0]Adder_MUX;
     wire [9:0]Address_MUX_out;
+    wire [N-1:0]ForwardUp_MUX;
+    wire [N-1:0]ForwardDown_MUX;
     //shifter
     wire [N-1:0]shifterOutput;
     //Adders
@@ -76,20 +78,24 @@ module processor
 
     //pipeline regs inputs 
     wire [95 :0]  IFID_in;
-    wire [191 :0] IDEX_in;
+    wire [201 :0] IDEX_in;
     wire [152 :0] EXMEM_in;
     wire [105 :0]  MEMWB_in;        
     //pipeline regs outputs 
     wire [95 :0]  IFID_out;
-    wire [191:0]  IDEX_out;
+    wire [201:0]  IDEX_out;
     wire [152:0]  EXMEM_out;
     wire [137 :0]  MEMWB_out;
 
     //pipeline inputs assigning 
     assign IFID_in  = {adder1,pcOutput,MemOut};
-    assign IDEX_in  = {IFID_out[95:64],IFID_out[24:20],IFID_out[6:0],auipcBit,E,JUMP,RegWrite,Mem2Reg,Branch,MemRead,MemWrite,ALUop,ALUsrc,IFID_out[63:32],ReadData1,ReadData2,ImmGeneratorOutput,IFID_out[14:12],IFID_out[30],IFID_out[11:7]}; 
+    assign IDEX_in  = {IFID_out[24:20]/*rs2*/,IFID_out[19:15]/*rs1*/,IFID_out[95:64],IFID_out[24:20],IFID_out[6:0],auipcBit,E,JUMP,RegWrite,Mem2Reg,Branch,MemRead,MemWrite,ALUop,ALUsrc,IFID_out[63:32],ReadData1,ReadData2,ImmGeneratorOutput,IFID_out[14:12],IFID_out[30],IFID_out[11:7]}; 
     assign EXMEM_in = {IDEX_out[191:160],IDEX_out[8:6],ALUcf,ALUvf,ALUsf,ALUnef,ALUgtef,ALUltf,ALUltuf,ALUgeuf,IDEX_out[147:140],adder2,ALUzeroFlag,ALUResult,IDEX_out[72:41],IDEX_out[4:0]};//e=108
     assign MEMWB_in = {EXMEM_out[101:70],EXMEM_out[152:121],EXMEM_out[109:105],MemOut,EXMEM_out[68:37],EXMEM_out[4:0]};
+
+    //forwarding signals
+    wire [1:0] forwardA;
+    wire [1:0] forwardB;
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
@@ -102,20 +108,25 @@ module processor
     controlUnit         Control_Unit                            (.inst(IFID_out[6:0]),.branch(Branch),.memread(MemRead),.mem2reg(Mem2Reg),.ALUop(ALUop),.memwrite(MemWrite),.ALUsrc(ALUsrc),.regwrite(RegWrite),.JUMP(JUMP), .E(E), .ebit(IFID_out[20]), .auipcBit(auipcBit)); //control unit
     ImmGen              immediateGenerator                      (.Imm(ImmGeneratorOutput),.IR(IFID_out[31:0]));    //Imm gen
     ALUcontrolUnit      ALU_Control_Unit                        (.ALUop(IDEX_out[139:138]),.in1(IDEX_out[8:6]),.in2(IDEX_out[5]),.ALUsel(ALUcontrolSelect), .opcode(IDEX_out[154:148]));   //aluControl   
-    ALU                 ALU1                                    (.a(IDEX_out[104:73]),.b(RF_MUX_out),.selection(ALUcontrolSelect),.out(ALUResult),.ZF(ALUzeroFlag), .shamt(IFID_out[24:20]), .CF(ALUcf), .VF(ALUvf), .SF(ALUsf), .NEF(ALUnef), .GTEF(ALUgtef), .LTF(ALUltf), .LTUF(ALUltuf), .GEUF(ALUgeuf));
+    ALU                 ALU1                                    (.a(ForwardUp_MUX),.b(RF_MUX_out),.selection(ALUcontrolSelect),.out(ALUResult),.ZF(ALUzeroFlag), .shamt(IFID_out[24:20]), .CF(ALUcf), .VF(ALUvf), .SF(ALUsf), .NEF(ALUnef), .GTEF(ALUgtef), .LTF(ALUltf), .LTUF(ALUltuf), .GEUF(ALUgeuf));
     adderUnit           Adder2                                  (.a(IDEX_out[136:105]),.b(shifterOutput),.cout(dontCareAdder2),.sum(adder2));  //adder of imm
     adderUnit           Adder1                                  (.a(pcOutput),.b(4'b0100),.cout(dontCareAdder1),.sum(adder1));        //inc of pc
     //Pipeline Registers
     reg_Nbit    #(96)   IF_ID                                   (.clk(~push), .en(en), .rst(rst),.D(IFID_in), .Q(IFID_out));   //inst mem(32), PC (32)
-    reg_Nbit    #(192)  ID_EX                                   (.clk(push), .en(en), .rst(rst),.D(IDEX_in), .Q(IDEX_out));   //inst[11:7] (5), inst[30,14:12] (4), immGen(32), readd2(32), readd1(32), IF_ID(32),controlU(EX, M,WB)(8)    
+    reg_Nbit    #(202)  ID_EX                                   (.clk(push), .en(en), .rst(rst),.D(IDEX_in), .Q(IDEX_out));   //inst[11:7] (5), inst[30,14:12] (4), immGen(32), readd2(32), readd1(32), IF_ID(32),controlU(EX, M,WB)(8)    
     reg_Nbit    #(153)  EX_MEM                                  (.clk(~push), .en(en), .rst(rst),.D(EXMEM_in), .Q(EXMEM_out));   //IDEX (inst[11:7](5)), IDEX(readd2(32)), ALURes(32), ZF(1), addsum(32), M(3), WB(2)
     reg_Nbit    #(138)  MEM_WB                                  (.clk(push), .en(en), .rst(rst),.D(MEMWB_in), .Q(MEMWB_out));   //EXMEM(inst[11:7](5)), EXMEM(alures(32)), readd(32), WB(2)
+    //forwarding unit 
+    forwardingUnit      fu                                      (.IDEX_RegisterRs1(IDEX_out[197:193]),.IDEX_RegisterRs2(IDEX_out[201:197]),.EXMEM_RegisterRd(EXMEM_out[4:0]),.MEMWB_RegisterRd(MEMWB_out[4:0]),.EXMEM_RegWrite(EXMEM_out[106]),.MEMWB_RegWrite((MEMWB_out[70])),.forwardA(forwardA),.forwardB(forwardB));    
     //MUXES
-    mux_2to1    #(32)   MUX_RF                                  (.a(IDEX_out[40:9]),.b(IDEX_out[72:41]),.s(IDEX_out[137]),.out(RF_MUX_out));   //RF MUX (bet reg file and alu)
+    mux_2to1    #(32)   MUX_RF                                  (.a(IDEX_out[40:9]/*ImmGenOut*/),.b(ForwardDown_MUX),.s(IDEX_out[137]),.out(RF_MUX_out));   //RF MUX (bet reg file and alu)
     mux_4to1    #(32)   MUX_IM                                  (.a(DM_MUX_out),.b(MEMWB_out[137:106]),.c(MEMWB_out[105:74]),.d(0),.s( (MEMWB_out[71]) ? 2'b10 :((MEMWB_out[73]) ? 2'b00 : 2'b01) ),.out(IM_MUX_out));  //between inst mem and rf    
     mux_2to1    #(32)   MUX_DataMem                             (.a(MEMWB_out[68:37]),.b(MEMWB_out[36:5]),.s(MEMWB_out[69]),.out(DM_MUX_out));   //data memory mux
     mux_4to1    #(32)   MUX_Adder                               (.a(EXMEM_out[101:70]),.b(adder1),.c(EXMEM_out[44:39]),.d(0),.s( ((EXMEM_out[107] & EXMEM_out[104]) | (branchGateOut)) ? 2'b01 :((EXMEM_out[107]) ?  2'b10:  2'b00) ),.out(Adder_MUX));   //adder mux
-    mux_2to1    #(10)   MUX_Address                             (.a(EXMEM_out[46:37]),.b((pcOutput[11:2]) << 2),.s(~push),.out(Address_MUX_out));   
+    mux_2to1    #(10)   MUX_Address                             (.a(EXMEM_out[46:37]),.b((pcOutput[11:2]) << 2),.s(~push),.out(Address_MUX_out));  
+    mux_4to1    #(32)   MUX_ForwardUp                           (.a(DM_MUX_out), .b(IDEX_out[104:73]), .c(EXMEM_out[68:37]), .d(2'b00), .s(forwardA), .out(ForwardUp_MUX)); 
+    mux_4to1    #(32)   MUX_ForwardDown                         (.a(DM_MUX_out), .b(IDEX_out[72:41]), .c(EXMEM_out[68:37]), .d(2'b00), .s(forwardB), .out(ForwardDown_MUX));
+
     //shifter
     shifter_nBit        shiftLeft1                              (.a(IDEX_out[40:9]), .out(shifterOutput));
     //branch module
