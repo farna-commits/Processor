@@ -14,7 +14,7 @@ module mux_4to1
     input [N-1:0]b,
     input[N-1:0] c, 
     input[N-1:0] d,
-    input [N-1:0]s, 
+    input [1:0]s, 
     output reg [N-1:0]out 
  );
  always @(*)
