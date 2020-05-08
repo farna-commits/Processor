@@ -8,7 +8,6 @@ module processor
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
                                                                             //input/outputs//
 (
-    //input clk,  //pc clock
     input rst,
     input push  //normal clock
 );
@@ -102,7 +101,6 @@ module processor
                                                                             //Instantiations//
 
     reg_Nbit            PC                                      (.clk(push), .en(en & MEMWB_out[72]), .rst(rst),.D(Adder_MUX), .Q(pcOutput));   //PC
-    //InstMem             InstructionMemory                       (.addr(pcOutput[`IR_raddr]), .data_out(Instruction));    //inst memory
     memory              Memory                                  (.clk(push), .MemRead(EXMEM_out[103]), .MemWrite(EXMEM_out[102]), .addr(Address_MUX_out), .data_in(EXMEM_out[36:5]), .func3(EXMEM_out[120:118]), .data_out(MemOut));
     regFile             RegisterFile                            (.r1(IFID_out[19:15]), .r2(IFID_out[24:20]),.wr(MEMWB_out[4:0]),.wd(IM_MUX_out),.wen(MEMWB_out[70]),.clk(~push),.rst(rst),.rdata1(ReadData1),.rdata2(ReadData2)); //reg file
     controlUnit         Control_Unit                            (.inst(IFID_out[6:0]),.branch(Branch),.memread(MemRead),.mem2reg(Mem2Reg),.ALUop(ALUop),.memwrite(MemWrite),.ALUsrc(ALUsrc),.regwrite(RegWrite),.JUMP(JUMP), .E(E), .ebit(IFID_out[20]), .auipcBit(auipcBit)); //control unit
@@ -126,33 +124,10 @@ module processor
     mux_2to1    #(10)   MUX_Address                             (.a(EXMEM_out[46:37]),.b((pcOutput[11:2]) << 2),.s(~push),.out(Address_MUX_out));  
     mux_4to1    #(32)   MUX_ForwardUp                           (.a(DM_MUX_out), .b(IDEX_out[104:73]), .c(EXMEM_out[68:37]), .d(2'b00), .s(forwardA), .out(ForwardUp_MUX)); 
     mux_4to1    #(32)   MUX_ForwardDown                         (.a(DM_MUX_out), .b(IDEX_out[72:41]), .c(EXMEM_out[68:37]), .d(2'b00), .s(forwardB), .out(ForwardDown_MUX));
-
     //shifter
     shifter_nBit        shiftLeft1                              (.a(IDEX_out[40:9]), .out(shifterOutput));
     //branch module
     branchGate          b1                                      (.zf(EXMEM_out[69]), .nef(EXMEM_out[114]), .gtef(EXMEM_out[113]), .ltf(EXMEM_out[112]), .ltuf(EXMEM_out[111]), .geuf(EXMEM_out[110]), .branch(EXMEM_out[104]), .Branching(branchGateOut), .func3(EXMEM_out[120:118]));
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
    
-                                                                            //Board//
-    //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-//((JUMP& Branch) | (ALUzeroFlag & Branch)) ? 2'b01 :((JUMP) ?  2'b10:  2'b00))
-
-    //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-
-    //clock divider 
-    reg [1:0]counter;
-    always @(posedge push) begin 
-        if (~rst) begin  
-            counter =0;     
-        end   
-        counter = counter + 1;
-        if (counter == 1) begin 
-            clk =0 ;
-        end else if (counter == 2) begin 
-            counter = 0;
-            clk =1;
-        end else begin 
-            clk =1;
-        end
-    end
 endmodule

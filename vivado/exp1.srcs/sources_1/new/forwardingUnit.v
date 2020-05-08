@@ -24,11 +24,11 @@ module forwardingUnit
     always@(*) begin
     
         //EX Hazard A
-        if(EXMEM_RegWrite && (EXMEM_RegisterRd != 0) && (EXMEM_RegisterRd == IDEX_RegisterRs1)) begin        
+        if ((EXMEM_RegWrite && (EXMEM_RegisterRd != 0) && (EXMEM_RegisterRd == IDEX_RegisterRs1)) && !(MEMWB_RegWrite && (MEMWB_RegisterRd != 0) && (MEMWB_RegisterRd == IDEX_RegisterRs1))) begin        
             forwardA = 2'b10;
         end else begin
             //MEM Hazard A
-            if(MEMWB_RegWrite && (MEMWB_RegisterRd != 0) && (MEMWB_RegisterRd == IDEX_RegisterRs1) && !(EXMEM_RegWrite && (EXMEM_RegisterRd != 0) && (EXMEM_RegisterRd == IDEX_RegisterRs1))) begin
+            if(MEMWB_RegWrite && (MEMWB_RegisterRd != 0) && (MEMWB_RegisterRd == IDEX_RegisterRs1)) begin
                 forwardA = 2'b01;    
             end else begin
             //default case
@@ -36,11 +36,11 @@ module forwardingUnit
             end
         end
         //EX Hazard B
-        if(EXMEM_RegWrite && (EXMEM_RegisterRd != 0) && (EXMEM_RegisterRd == IDEX_RegisterRs2)) begin        
+        if(EXMEM_RegWrite && (EXMEM_RegisterRd != 0) && (EXMEM_RegisterRd == IDEX_RegisterRs2) && !(MEMWB_RegWrite && (MEMWB_RegisterRd != 0) && (MEMWB_RegisterRd == IDEX_RegisterRs2))) begin        
             forwardB = 2'b10;
         end else begin               
             //MEM Hazard B
-            if(MEMWB_RegWrite && (MEMWB_RegisterRd != 0) && (MEMWB_RegisterRd == IDEX_RegisterRs2) && !(EXMEM_RegWrite && (EXMEM_RegisterRd != 0) && (EXMEM_RegisterRd == IDEX_RegisterRs2))) begin
+            if(MEMWB_RegWrite && (MEMWB_RegisterRd != 0) && (MEMWB_RegisterRd == IDEX_RegisterRs2)) begin
                 forwardB = 2'b01;    
             end else begin
                 forwardB = 2'b00;
