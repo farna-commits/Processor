@@ -89,7 +89,7 @@
 `define     ALUCUXORI       13'b00_100_x_0010011
 `define     ALUCUSLTI       13'b00_010_x_0010011
 `define     ALUCUSLTUI      13'b00_011_x_0010011
-`define     ALUCUJALR       13'b00_000_x_0010011
+`define     ALUCUJALR       13'b00_000_x_1100111
 `define     ALUCULW         13'b00_010_x_0000011
 `define     ALUCULH         13'b00_001_x_0000011
 `define     ALUCULB         13'b00_000_x_0000011

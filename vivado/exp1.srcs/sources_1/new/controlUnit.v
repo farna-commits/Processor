@@ -14,11 +14,20 @@ module controlUnit
     output reg ALUsrc,
     output reg regwrite,
     output reg JUMP,
-    output reg E,
+    output reg ebreak_flag,
     output reg auipcBit
     );
     
+    initial begin 
+        ebreak_flag = 1;
+    end
     
+    always@(*)begin     
+        if (~E) begin 
+            ebreak_flag = 0;
+        end
+    end
+    reg E;     
     always@(*)begin
         casex ({inst[6:2], ebit})
             `CU_R           : {branch,memread,mem2reg,ALUop[1:0],memwrite,ALUsrc,regwrite,JUMP,E,auipcBit} = 11'b00010001010;   //r
