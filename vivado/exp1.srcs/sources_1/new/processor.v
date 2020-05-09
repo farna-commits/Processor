@@ -9,7 +9,7 @@ module processor
                                                                             //input/outputs//
 (
     input rst,
-    input push  //normal clock
+    input push  
 );
     
     parameter N=32;   //no. of bits
@@ -20,7 +20,7 @@ module processor
     reg clk;                    //PC clock
     wire [N-1:0]pcInput;         //PC
     wire [N-1:0]pcOutput;        //PC
-    wire [N-1:0]Instruction;     //PC->hagat kteer
+    wire [N-1:0]Instruction; 
     wire [N-1:0]ReadData1;       //RegFile
     wire [N-1:0]ReadData2;       //RegFile
     //Control Unit
@@ -79,7 +79,7 @@ module processor
     wire [95 :0]  IFID_in;
     wire [201 :0] IDEX_in;
     wire [152 :0] EXMEM_in;
-    wire [105 :0]  MEMWB_in;        
+    wire [137 :0]  MEMWB_in;        
     //pipeline regs outputs 
     wire [95 :0]  IFID_out;
     wire [201:0]  IDEX_out;
@@ -89,7 +89,7 @@ module processor
     //pipeline inputs assigning 
     assign IFID_in  = {adder1,pcOutput,MemOut};
     assign IDEX_in  = {IFID_out[24:20]/*rs2*/,IFID_out[19:15]/*rs1*/,IFID_out[95:64],IFID_out[24:20],IFID_out[6:0],auipcBit,E,JUMP,RegWrite,Mem2Reg,Branch,MemRead,MemWrite,ALUop,ALUsrc,IFID_out[63:32],ReadData1,ReadData2,ImmGeneratorOutput,IFID_out[14:12],IFID_out[30],IFID_out[11:7]}; 
-    assign EXMEM_in = {IDEX_out[191:160],IDEX_out[8:6],ALUcf,ALUvf,ALUsf,ALUnef,ALUgtef,ALUltf,ALUltuf,ALUgeuf,IDEX_out[147:140],adder2,ALUzeroFlag,ALUResult,IDEX_out[72:41],IDEX_out[4:0]};//e=108
+    assign EXMEM_in = {IDEX_out[191:160],IDEX_out[8:6],ALUcf,ALUvf,ALUsf,ALUnef,ALUgtef,ALUltf,ALUltuf,ALUgeuf,IDEX_out[147:140],adder2,ALUzeroFlag,ALUResult,ForwardDown_MUX,IDEX_out[4:0]};//e=108
     assign MEMWB_in = {EXMEM_out[101:70],EXMEM_out[152:121],EXMEM_out[109:105],MemOut,EXMEM_out[68:37],EXMEM_out[4:0]};
 
     //forwarding signals
@@ -103,7 +103,7 @@ module processor
     reg_Nbit            PC                                      (.clk(push), .en(en & MEMWB_out[72]), .rst(rst),.D(Adder_MUX), .Q(pcOutput));   //PC
     memory              Memory                                  (.clk(push), .MemRead(EXMEM_out[103]), .MemWrite(EXMEM_out[102]), .addr(Address_MUX_out), .data_in(EXMEM_out[36:5]), .func3(EXMEM_out[120:118]), .data_out(MemOut));
     regFile             RegisterFile                            (.r1(IFID_out[19:15]), .r2(IFID_out[24:20]),.wr(MEMWB_out[4:0]),.wd(IM_MUX_out),.wen(MEMWB_out[70]),.clk(~push),.rst(rst),.rdata1(ReadData1),.rdata2(ReadData2)); //reg file
-    controlUnit         Control_Unit                            (.inst(IFID_out[6:0]),.branch(Branch),.memread(MemRead),.mem2reg(Mem2Reg),.ALUop(ALUop),.memwrite(MemWrite),.ALUsrc(ALUsrc),.regwrite(RegWrite),.JUMP(JUMP), .E(E), .ebit(IFID_out[20]), .auipcBit(auipcBit)); //control unit
+    controlUnit         Control_Unit                            (.inst(IFID_out[6:0]),.branch(Branch),.memread(MemRead),.mem2reg(Mem2Reg),.ALUop(ALUop),.memwrite(MemWrite),.ALUsrc(ALUsrc),.regwrite(RegWrite),.JUMP(JUMP), .ebreak_flag(E), .ebit(IFID_out[20]), .auipcBit(auipcBit)); //control unit
     ImmGen              immediateGenerator                      (.Imm(ImmGeneratorOutput),.IR(IFID_out[31:0]));    //Imm gen
     ALUcontrolUnit      ALU_Control_Unit                        (.ALUop(IDEX_out[139:138]),.in1(IDEX_out[8:6]),.in2(IDEX_out[5]),.ALUsel(ALUcontrolSelect), .opcode(IDEX_out[154:148]));   //aluControl   
     ALU                 ALU1                                    (.a(ForwardUp_MUX),.b(RF_MUX_out),.selection(ALUcontrolSelect),.out(ALUResult),.ZF(ALUzeroFlag), .shamt(IFID_out[24:20]), .CF(ALUcf), .VF(ALUvf), .SF(ALUsf), .NEF(ALUnef), .GTEF(ALUgtef), .LTF(ALUltf), .LTUF(ALUltuf), .GEUF(ALUgeuf));
@@ -115,12 +115,12 @@ module processor
     reg_Nbit    #(153)  EX_MEM                                  (.clk(~push), .en(en), .rst(rst),.D(EXMEM_in), .Q(EXMEM_out));   //IDEX (inst[11:7](5)), IDEX(readd2(32)), ALURes(32), ZF(1), addsum(32), M(3), WB(2)
     reg_Nbit    #(138)  MEM_WB                                  (.clk(push), .en(en), .rst(rst),.D(MEMWB_in), .Q(MEMWB_out));   //EXMEM(inst[11:7](5)), EXMEM(alures(32)), readd(32), WB(2)
     //forwarding unit 
-    forwardingUnit      fu                                      (.IDEX_RegisterRs1(IDEX_out[197:193]),.IDEX_RegisterRs2(IDEX_out[201:197]),.EXMEM_RegisterRd(EXMEM_out[4:0]),.MEMWB_RegisterRd(MEMWB_out[4:0]),.EXMEM_RegWrite(EXMEM_out[106]),.MEMWB_RegWrite((MEMWB_out[70])),.forwardA(forwardA),.forwardB(forwardB));    
+    forwardingUnit      fu                                      (.IDEX_RegisterRs1(IDEX_out[196:192]),.IDEX_RegisterRs2(IDEX_out[201:197]),.EXMEM_RegisterRd(EXMEM_out[4:0]),.MEMWB_RegisterRd(MEMWB_out[4:0]),.EXMEM_RegWrite(EXMEM_out[106]),.MEMWB_RegWrite((MEMWB_out[70])),.forwardA(forwardA),.forwardB(forwardB));    
     //MUXES
     mux_2to1    #(32)   MUX_RF                                  (.a(IDEX_out[40:9]/*ImmGenOut*/),.b(ForwardDown_MUX),.s(IDEX_out[137]),.out(RF_MUX_out));   //RF MUX (bet reg file and alu)
     mux_4to1    #(32)   MUX_IM                                  (.a(DM_MUX_out),.b(MEMWB_out[137:106]),.c(MEMWB_out[105:74]),.d(0),.s( (MEMWB_out[71]) ? 2'b10 :((MEMWB_out[73]) ? 2'b00 : 2'b01) ),.out(IM_MUX_out));  //between inst mem and rf    
     mux_2to1    #(32)   MUX_DataMem                             (.a(MEMWB_out[68:37]),.b(MEMWB_out[36:5]),.s(MEMWB_out[69]),.out(DM_MUX_out));   //data memory mux
-    mux_4to1    #(32)   MUX_Adder                               (.a(EXMEM_out[101:70]),.b(adder1),.c(EXMEM_out[44:39]),.d(0),.s( ((EXMEM_out[107] & EXMEM_out[104]) | (branchGateOut)) ? 2'b01 :((EXMEM_out[107]) ?  2'b10:  2'b00) ),.out(Adder_MUX));   //adder mux
+    mux_4to1    #(32)   MUX_Adder                               (.a(EXMEM_out[101:70]),.b(adder1),.c(EXMEM_out[68:37]),.d(0),.s( ((EXMEM_out[107] & EXMEM_out[104]) | (branchGateOut)) ? 2'b01 :((EXMEM_out[107]) ?  2'b10:  2'b00) ),.out(Adder_MUX));   //adder mux
     mux_2to1    #(10)   MUX_Address                             (.a(EXMEM_out[46:37]),.b((pcOutput[11:2]) << 2),.s(~push),.out(Address_MUX_out));  
     mux_4to1    #(32)   MUX_ForwardUp                           (.a(DM_MUX_out), .b(IDEX_out[104:73]), .c(EXMEM_out[68:37]), .d(2'b00), .s(forwardA), .out(ForwardUp_MUX)); 
     mux_4to1    #(32)   MUX_ForwardDown                         (.a(DM_MUX_out), .b(IDEX_out[72:41]), .c(EXMEM_out[68:37]), .d(2'b00), .s(forwardB), .out(ForwardDown_MUX));

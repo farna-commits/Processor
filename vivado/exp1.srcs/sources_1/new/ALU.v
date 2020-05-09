@@ -15,7 +15,7 @@ module ALU
 
     //internal signals
     wire cout;
-    wire [N-1:0]add, op_b;
+    wire [N-1:0]add, op_b, op_b2;
     wire [N-1:0]sub;
     wire cfa, cfs;
     wire [N-1:0] sh;
@@ -26,8 +26,9 @@ module ALU
     shifter sh1 (.a(a), .shamt(shamt), .type(selection[1:0]), .r(sh));
     
     //plus/minus
-    assign {CF, add} = selection[0] ? (a + op_b + 1'b1) : (a + b);
+    assign {CF, add} = selection[0] ? (a + op_b2 + 1'b1) : (a + b);
     assign op_b = (~b);
+    assign op_b2 = (~abs2);
     //flags
     assign ZF   = (add == 0); //zero
     assign SF   = add[N-1];    //sign
