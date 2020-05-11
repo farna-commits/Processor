@@ -35,7 +35,7 @@ mux_2to1  #(32)   MUX_data  (.a(data_out2),.b(data_out1),.s(~clk),.out(data_out)
      $readmemh("test.mem",mem);
     //data 
     mem[300] = 8'b00000001;
-    mem[301] = 8'b00000000;
+    mem[301] = 8'b00000010;
     mem[302] = 8'b00000000;
     mem[303] = 8'b00000100;
     mem[304] = 8'b00000000;

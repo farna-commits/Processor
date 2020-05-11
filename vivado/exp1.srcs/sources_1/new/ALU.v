@@ -10,7 +10,7 @@ module ALU
     input wire [4:0]  shamt,
     input wire [3:0]selection,
     output reg [N-1:0]out,
-    output wire ZF, CF, VF, SF, NEF, GTEF, LTF, LTUF, GEUF
+    output wire CF, VF, SF
 );
 
     //internal signals
@@ -30,14 +30,9 @@ module ALU
     assign op_b = (~b);
     assign op_b2 = (~abs2);
     //flags
-    assign ZF   = (add == 0); //zero
+    //assign ZF   = (add == 0); //zero
     assign SF   = add[N-1];    //sign
     assign VF   = (a[N-1] ^ (op_b[N-1]) ^ add[N-1] ^ CF);    //overflow  
-    assign NEF  = (~ZF); //bne
-    assign GTEF = (add[N-1] == 1'b0); //bge
-    assign LTF  = (add[N-1] == 1'b1); //blt
-    assign LTUF = (abs1 < abs2);
-    assign GEUF = (abs1 >= abs2);
     //Control Unit
     always@(*) begin
         out = 0;

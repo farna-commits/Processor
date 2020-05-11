@@ -123,3 +123,8 @@
 `define     CU_AUIPC        6'b00101_x
 `define     CU_LUI          6'b01101_x
 
+`define     BEQ1            13'b01_000_0_1100011
+`define     BEQ2            13'b01_000_1_1100011
+`define     JALR1           13'b00_000_0_1100111
+`define     JALR2           13'b00_000_1_1100111
+

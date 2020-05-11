@@ -8,7 +8,7 @@ module processor_tb();
     reg push;
     
     //inst
-    processor p1(.rst(rst),.push(push));
+    processor p1(.rst(rst),.clk(push));
     
     initial begin
         en=1;

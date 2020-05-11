@@ -45,9 +45,7 @@ module forwardingUnit
             end else begin
                 forwardB = 2'b00;
                 end
-        end 
-                    
-        
+        end                             
     end
  
 endmodule
