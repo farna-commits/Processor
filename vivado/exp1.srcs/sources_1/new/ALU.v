@@ -10,12 +10,12 @@ module ALU
     input wire [4:0]  shamt,
     input wire [3:0]selection,
     output reg [N-1:0]out,
-    output wire ZF, CF, VF, SF, NEF, GTEF, LTF, LTUF, GEUF
+    output wire CF, VF, SF
 );
 
     //internal signals
     wire cout;
-    wire [N-1:0]add, op_b;
+    wire [N-1:0]add, op_b, op_b2;
     wire [N-1:0]sub;
     wire cfa, cfs;
     wire [N-1:0] sh;
@@ -26,17 +26,13 @@ module ALU
     shifter sh1 (.a(a), .shamt(shamt), .type(selection[1:0]), .r(sh));
     
     //plus/minus
-    assign {CF, add} = selection[0] ? (a + op_b + 1'b1) : (a + b);
+    assign {CF, add} = selection[0] ? (a + op_b2 + 1'b1) : (a + b);
     assign op_b = (~b);
+    assign op_b2 = (~abs2);
     //flags
-    assign ZF   = (add == 0); //zero
+    //assign ZF   = (add == 0); //zero
     assign SF   = add[N-1];    //sign
     assign VF   = (a[N-1] ^ (op_b[N-1]) ^ add[N-1] ^ CF);    //overflow  
-    assign NEF  = (~ZF); //bne
-    assign GTEF = (add[N-1] == 1'b0); //bge
-    assign LTF  = (add[N-1] == 1'b1); //blt
-    assign LTUF = (abs1 < abs2);
-    assign GEUF = (abs1 >= abs2);
     //Control Unit
     always@(*) begin
         out = 0;

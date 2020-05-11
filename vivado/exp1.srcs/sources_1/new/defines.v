@@ -89,7 +89,7 @@
 `define     ALUCUXORI       13'b00_100_x_0010011
 `define     ALUCUSLTI       13'b00_010_x_0010011
 `define     ALUCUSLTUI      13'b00_011_x_0010011
-`define     ALUCUJALR       13'b00_000_x_0010011
+`define     ALUCUJALR       13'b00_000_x_1100111
 `define     ALUCULW         13'b00_010_x_0000011
 `define     ALUCULH         13'b00_001_x_0000011
 `define     ALUCULB         13'b00_000_x_0000011
@@ -122,4 +122,9 @@
 `define     CU_FENCE        6'b00011_x
 `define     CU_AUIPC        6'b00101_x
 `define     CU_LUI          6'b01101_x
+
+`define     BEQ1            13'b01_000_0_1100011
+`define     BEQ2            13'b01_000_1_1100011
+`define     JALR1           13'b00_000_0_1100111
+`define     JALR2           13'b00_000_1_1100111
 
